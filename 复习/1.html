@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // alert(toString(true))
+    // alert(isNaN('1'))
+    // alert(typeof NaN)
+    // alert(toString(null))
+    // alert(toString({a:1}))
+    // alert(String({a:1}))
+    // alert(String(Object))
+    // alert(Object.prototype.toString.call(null))
+    // console.log(10 + null + true + [] + undefined+ '小鹿' + null + [] + 10 + false )
+    // var obj = {
+    //   name: '小鹿',
+    //   age: '22',
+    //   adress: '小鹿动画学编程'
+    // }
+    // function print() {
+    //   console.log(this); // 打印 this 的指向
+    //   console.log(arguments); // 打印传递的参数
+    // }
+    // // 通过 call 改变 this 指向
+    // print.call(obj, 1, 2, 3);
+    // // 通过 apply 改变 this 指向
+    // print.apply(obj, [1, 2, 3]);
+    // // 通过 bind 改变 this 的指向
+    // let fn = print.bind(obj, 1, 2, 3);
+    // fn();
+    // Function.prototype.myCall = function (context) {
+    //   // 判断调用者是否为函数
+    //   if (typeof this !== 'function') {
+    //     throw new TypeError('Error')
+    //   }
+    //   // 不传参默认为 window
+    //   context = context || window
+    //   // 新增 fn 属性,将值设置为需要调用的函数
+    //   context.fn = this
+    //   // 将 arguments 转化为数组将 call 的传参提取出来 [...arguments]
+    //   const args = Array.from(arguments).slice(1)
+    //   console.log(args);
+    //   // 传参调用函数
+    //   const result = context.fn(...args)
+    //   // 删除函数
+    //   delete context.fn
+    //   // 返回执行结果
+    //   return result;
+    // }
+    // // 普通函数
+    // function print(...age) {
+    //   console.log(this.name + "      " + age);
+    // }
+    // // 自定义对象
+    // var obj = {
+    //   name: '小鹿'
+    // }
+    // // 调用函数的 call 方法
+    // print.myCall(obj, 1, 2, 3)
+    
+    Function.prototype.myBind = function (context) {
+      // 判断调用者是否为函数
+      if (typeof this !== 'function') {
+        throw new TypeError('Error')
+      }
+      // 截取传递的参数
+      const args = Array.from(arguments).slice(1)
+      console.log(args);
+      // _this 指向调用的函数
+      const _this = this;
+      console.log(this);
+      // 返回一个函数
+      return function F() {
+        // 因为返回了一个函数，我们可以 new F()，所以需要判断
+        // 对于 new 的情况来说，不会被任何方式改变 this
+        if (this instanceof F) {
+          console.log(1);
+          console.log(this,...args);
+          // return _this(...args)
+          // _this(...args)
+          // return new _this(...args)
+                context.fn = _this
+      // 传参调用函数
+      const result = context.fn(...args)
+      // 删除函数
+      delete context.fn
+      // 返回执行结果
+      return result;
+        } else {
+          console.log(2);
+          return _this.apply(context, args.concat(...arguments))
+        }
+      }
+    }
+    function print(...a) {
+      // new 的方式调用 bind 参数输出换做 [...arguments]
+      console.log(this.name,'+',...a);
+    }
+    // 自定义对象
+    var obj = {
+      name: '小鹿'
+    }
+    // 调用函数的 call 方法
+    let F = print.myBind(obj, 1, 2, 3);
+    // 返回对象
+    let obj1 = new F();
+    // console.log(F());
+  </script>
+</body>
+
+</html>

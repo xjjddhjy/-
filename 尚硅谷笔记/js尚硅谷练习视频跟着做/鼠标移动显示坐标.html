@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #areaDiv {
+            width: 300px;
+            height: 100px;
+            border-radius: 10px;
+            border: 1px solid red;
+            margin: 20px auto;
+        }
+        #showMsg {
+            margin: 0 auto;
+            line-height: 50px;
+            width: 300px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var areaDiv=document.getElementById('areaDiv');
+            var showMsg=document.getElementById('showMsg');
+            // ie8中，浏览器不会传事件对象event,是作为window的属性，要window.event
+            areaDiv.onmousemove=function(event){
+                if(!event){
+                    event=window.event;
+                }
+                // event=event||window.event;或是找true的，如果第一个由就直接返回
+                showMsg.innerHTML='x:'+event.clientX+',y:'+event.clientY;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="areaDiv">
+
+    </div>
+    <div id="showMsg">
+
+    </div>
+</body>
+
+</html>

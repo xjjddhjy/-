@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./动画效果move方法.js">
+
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 200px;
+        }
+    </style>
+    <script>
+        
+        window.onload = function () {
+
+            
+            var obj = document.getElementById('box1');
+            var btn = document.getElementById('btn01');
+            btn.onclick = function(){
+                move(obj, 'width', 10, 100, 800, function () {
+                move(obj, 'height', 10, 100, 800, function () {
+                    move(obj, 'width', -10, 0, 800)
+                })
+            })
+            }
+
+            
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点击按钮1</button>
+    <button id="btn02">点击按钮2</button>
+    <button id="btn03">点击按钮3</button>
+    <br><br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div style="width:0;height: 1000px;border-left: 1px black solid;position:absolute ;left: 800px;top: 0;"></div>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../资料/重置样式表/reset.css">
+    <style>
+        ul img{
+            width: 590px;
+            height: 470px;
+            
+        }
+        .ul-list li{
+            position: absolute;
+        }
+        .ul-list{
+            width: 590px;
+            height: 470px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .ul-list li:nth-child(3){
+            z-index: 10;
+        }
+        .points a{
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255,.3);
+            margin-left: 4px;
+            float: left;
+            border-radius: 50%;
+            /* box-sizing: border-box; */
+            background-clip: content-box;
+            /*  background-clip设置背景色只涉及到content区域 */
+            border:2px solid transparent;
+            
+        }
+        .ul-list .points{
+            position: absolute;
+            z-index: 9999;
+            bottom: 20px;
+            left: 20px;
+        }
+        .points a.active,
+        .points a:hover{
+            background-color: rgb(255, 255, 255);
+            border:2px solid rgba(255, 255, 255, 0.3) ;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ul-list">
+        <li><a  href="javascript:;"><img src="../../1.jpg" alt=""></a></li>
+        <li><a href="javascript:;"><img src="../../2.jpg" alt=""></a></li>
+        <li><a href="javascript:;"><img src="../../3.jpg" alt=""></a></li>
+        <li><a href="javascript:;"><img src="../../4.jpg" alt=""></a></li>
+        <li><a href="javascript:;"><img src="../../5.jpg" alt=""></a></li>
+        <li><a href="javascript:;"><img src="../../6.jpg" alt=""></a></li>
+        <li><a href="javascript:;"><img src="../../7.jpg" alt=""></a></li>
+        <li><a href="javascript:;"><img src="../../8.jpg" alt=""></a></li>
+        <div class="points">
+            <a class='active' href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </ul>
+    
+</body>
+</html>

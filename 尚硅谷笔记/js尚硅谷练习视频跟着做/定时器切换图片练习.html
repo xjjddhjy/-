@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var img1 = document.getElementById('img1');
+            var btn1 = document.getElementById('btn1');
+            var index=0;
+            var imgArr = [
+                '../../1.jpg',
+                '../../2.jpg',
+                '../../3.jpg',
+                '../../4.jpg',
+                '../../5.jpg',
+                '../../6.jpg',
+                '../../7.jpg',
+                '../../8.jpg',
+                '../../9.jpg',
+                '../../10.jpg',
+            ];
+            var timer;
+            // timer只有一个，多次点击按钮会覆盖前面的造成内存泄漏，以至于开了很多定时器关不了，
+            // 只能关最后一个
+            btn1.onclick=function(){
+                if(timer){
+                    clearInterval(timer);
+                }
+                
+                timer=setInterval(function(){
+                index++;
+                if(index>=imgArr.length){
+                    index=0;
+                }
+                img1.src=imgArr[index];
+                // index=index%imgArr.length;
+            },1000)
+            }
+           
+        }
+    </script>
+</head>
+
+<body>
+    <img id='img1' src="../../1.jpg" alt="">
+    <button id="btn1">开始</button>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+body {
+  width: 100px;
+  height: 100px;
+}
+.box6 {
+  width: 200px;
+  background-image: url('box6/1.png');
+}
+.box2,
+.box4 {
+  width: 120px;
+}
+.box3 {
+  width: 115px;
+  height: 115px;
+}
+.box3:hover {
+  color: #bfa;
+}
+.box4 {
+  color: #bfa;
+}
+.box5 {
+  width: 120px;
+}

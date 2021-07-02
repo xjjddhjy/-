@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box1 {
+            width: 300px;
+            height: 300px;
+            background-color: yellowgreen;
+            position: absolute;
+        }
+
+        #box4 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            left: 100px;
+            top: 100px;
+        }
+
+        /* #box2{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        } */
+    </style>
+    <script>
+        window.onload = function () {
+            function drag(obj) {
+                // function bind(obj,eventStr,callback){
+                //     if(obj.addEventListener){
+                //         obj.addEventListener(eventStr,callback,true)
+                //     }else{
+                //         obj.attachEvent('on'+eventStr,function(){
+                //             callback.call(obj);
+                //         })
+                //     }
+                // }
+                var box1 = document.getElementById(obj);
+                box1.onmousedown = function () {
+
+                    var x0 = event.clientX - box1.offsetLeft;
+                    var y0 = event.clientY - box1.offsetTop;
+                    console.log(box1.offsetTop);
+                    console.log(event.clientY);
+                    document.onmousemove = function (event) {
+                        event = event || window.event;
+                        var x = event.clientX;
+                        var y = event.clientY;
+                        box1.style.left = x - x0 + 'px';
+                        box1.style.top = y - y0 + 'px';
+
+                    };
+                    document.onmouseup = function () {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                    };
+                    return false;
+                }
+                // var box2=document.getElementById('box2');
+                // var box3=document.getElementById('box3');
+                // bind(box1,'click',function () {
+                //     alert('1')
+                // });
+                // bind(box2,'click',function () {
+                //     alert('2')
+                // });
+                // bind(box3,'click',function () {
+                //     alert('3')
+                // });
+            };
+            drag('box1');
+            drag('box4');
+            //drag('img');
+            function move(divStr) {
+                var timer;   
+                var dir;  
+                var div;
+                var speed;  
+                speed = 5;
+                dir=0;
+                div = document.getElementById(divStr);   
+                timer = setInterval(function () {
+                        switch (dir) {
+                            case 37: div.style.left = div.offsetLeft - speed + 'px';
+                                break;
+                            case 38: div.style.top = div.offsetTop - speed + 'px';
+                                break;
+                            case 39: div.style.left = div.offsetLeft + speed + 'px';
+                                break;
+                            case 40: div.style.top = div.offsetTop + speed + 'px';
+                                break;
+                        };
+                    }, 20);    
+                document.onkeydown = function (event) {
+                    
+                    dir = event.keyCode;
+                    var event = event || window.event;
+                    
+                    
+                    if (event.ctrlKey == 1) {
+                        speed = 50;
+                    }else{
+                        speed=5;
+                    };
+                    // console.log(div.offsetTop);
+                    // console.log(event.clientY);
+                    
+                    if (event.keyCode > 36 && event.keyCode < 41) {
+                        return false;
+                    };
+
+                };
+                document.onkeyup =function(){
+                    dir=0;
+                }
+                
+            };
+            //
+            //
+            //
+            move('box1');
+            // alert(/chrome/i.test(navigator.userAgent));
+            // alert(window.ActiveXObject)
+            //alert(history.length);
+            var qianjin = document.getElementById('qianjin');
+            var count = document.getElementById('count');
+            qianjin.onclick = function () {
+                // history.forward();
+                clearInterval(timer2);
+
+            };
+            var timer2;
+            var timer2S = 0;
+            var huitui = document.getElementsByClassName('huitui')[0];
+            huitui.onclick = function () {
+                if (timer2S) {
+                    clearInterval(timer2);
+                    timer2S = 0;
+                    return;
+                }
+                timer2S = 1;
+                //location.replace('www.baidu.com');
+                timer2 = setInterval(function () {
+                    // img.src=imgArr[num++];
+                    // if(num==5){
+                    //    num=0;
+                    // }
+                    num = num % imgArr.length;
+                    img.src = imgArr[num];
+                    num++;
+
+                }, 500);
+            };
+            var num = 0;
+            // var timer=setInterval(function(){
+            //     count.innerHTML=num++;
+            //     if(num==11){
+            //         
+            //     }
+            // },1000);
+            var imgArr = ['./1.jpg', './2.jpg', './3.jpg', './4.jpg', './5.jpg'];
+            var img = document.getElementById('img');
+
+
+
+
+
+
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <h1 id='count'>123</h1>
+    <p>1243</p>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+    <div id='box4'></div>
+    <!-- <img src="./1.jpg" id='img' alt="" style="position: absolute;"> -->
+    <a href="拾遗2.html">2.html</a>
+    <button class='huitui'>huitui</button>
+    <button id='qianjin'>qianjin</button>
+    <input type="text">
+    <img id='img' src="./10.jpg" alt="">
+
+</body>
+
+</html>

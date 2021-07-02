@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="get">
+    <input type="button" value="post">
+    <script src='http://unpkg.com/axios/dist/axios.min.js'></script>
+<!-- 功能强大的请求库，内部是ajax -->
+    <script>
+        // axios.get(地址?key=value&key2=value2).then(function(response){},function(err){})
+    
+        // axios.post(地址,参数对象{key:value,key2:value2}).then(function(response){},function(err){})
+    
+    // https://autumnfish.cn/api/joke/list,请求get，参数名num，值为数字
+    // https://autumnfish.cn/api/user/reg,post,username（字符串)
+    document.querySelectorAll('input')[0].onclick=function(){
+        axios.get('https://autumnfish.cn/api/joke/list?num=3')
+        .then(function(response){
+            console.log(response);
+        },function(err){
+            alert('出错了'+err)
+        })
+    }
+    document.querySelectorAll('input')[1].onclick=function(){
+        axios.post('https://autumnfish.cn/api/user/reg',
+        {username:'西蓝花'}).then(function(response){
+            console.log( response);
+        },function(err){
+            alert('出错了'+err)
+        })
+    }
+    </script>
+</body>
+</html>

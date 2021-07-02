@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 先创建一个空对象，然后添加,
+        // 也可以用字面量，var p={}
+        // var p = new Object()
+        // p.name = 'Tom'
+        // p.age = 12
+        // p.setName = function (name) {
+        //     this.name = name
+        // }
+        // 工厂函数，添加多个对象，不过添加的对象也是Object类型，
+        // 用构造函数最好
+        // function createPerson(name, age) {
+        //     var obj = {
+        //         name: name,
+        //         age: age,
+        //         setName: function (name) {
+        //             this.name = name
+        //         }
+        //     }
+        //     return obj
+        // }
+        // var p1 = createPerson('Tom', 12)
+        // var p2 = createPerson('Bob', 13)
+        // 构造函数,缺点是每个对象都有相同的数据，浪费内存，那就把相同的放到原型里
+        // function Person(name, age) {
+        //     this.name = name
+        //     this.age = age
+        //     this.setName = function (name) {
+        //         this.name = name
+        //     }
+        //     // 不用return
+        // }
+        // var p1 = new Person('Tom', 12)
+        // p1.setName('Jack')
+        // console.log(p1.age, p1.name);
+        // 构造函数+原型的模式
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+
+            // 不用return
+        }
+        Person.prototype.setName = function (name) {
+            this.name = name
+        }
+        var p1 = new Person('Tom', 12)
+        var p2 = new Person('Bob', 13)
+        console.log(p1,p2);
+    </script>
+</body>
+
+</html>

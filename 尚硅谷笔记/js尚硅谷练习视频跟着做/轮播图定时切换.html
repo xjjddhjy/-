@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #outer{
+            width: 420px;
+            height: 300px;
+            background-color: #bfa;
+            
+            margin: 50px auto;
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        #outer #ul{
+            /* width: 0px; */
+            /* height: 300px;    */
+            position: absolute;
+            
+            
+        }
+        #outer #ul li{
+           
+            list-style: none;
+            margin: 0 10px;
+            float: left;
+            
+
+        }
+        #outer #ul img{
+            width: 400px;
+            height: 300px;
+            vertical-align:top; 
+        }
+        #navDiv{
+           
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            /* left会让元素最大width只能为父亲的50%，要么就规定好width */
+            transform: translateX(-50%);
+        }
+        #navDiv a{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            opacity: 0.5;
+            margin: 0 10px;
+        }
+        #navDiv a:hover{
+            background-color: black ;
+        }
+    </style>
+    <script src="./js工具/getStyle和move方法.js"></script>
+    <script>
+        window.onload=function(){
+            var ul=document.getElementById('ul');
+            var imgArr=document.getElementsByTagName('img');
+            var navDiv=document.getElementById('navDiv');
+            navDiv.style.width=imgArr.length*40+'px';
+            ul.style.width=(imgArr[0].offsetWidth+20)*imgArr.length+'px';
+            var index=0;
+            
+            var allA=document.getElementsByTagName('a');
+            setA();
+            // 点击超链接，显示图片
+            for(var i=0;i<allA.length;i++){
+                allA[i].index=i;
+                allA[i].onclick=function(){
+                    clearInterval(timer);
+                    // 获取它的索引,修改图片的index
+                    index=this.index;
+                    // 
+                    // ul.style.left=index*(-420)+'px';
+                    // 修改a的样式
+                    allA[index].style.backgroundColor='black';
+                    setA();
+                    move(ul,30,-420*index,'left',function(){
+                        autoChange();
+                    });
+
+                }
+            }
+            // 创建一个方法设置选中的a
+            function setA(){
+                if(index>=imgArr.length-1){
+                    index=0;
+                    ul.style.left=0;
+                }
+                for(var i=0;i<allA.length;i++){
+                    allA[i].style.backgroundColor='';
+                }
+                // 将选中的设置为黑色
+                allA[index].style.backgroundColor='black';
+            };
+            var timer;
+            // 自动切换图片
+            function autoChange(){
+                // 开始定时器，定时调用move
+                timer=setInterval(function(){
+                    index++;
+                    if(index>=imgArr.length){
+                        index=0;
+                        
+                    }
+                    move(ul,30,-420*index,'left',function(){
+                        setA()
+                    });
+                },1000)
+            }
+            autoChange();
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="ul">
+            <li><img src="../../1.jpg" alt=""></li>
+            <li><img src="../../2.jpg" alt=""></li>
+            <li><img src="../../3.jpg" alt=""></li>
+            <li><img src="../../4.jpg" alt=""></li>
+            <li><img src="../../5.jpg" alt=""></li>
+            <li><img src="../../6.jpg" alt=""></li>
+            <li><img src="../../1.jpg" alt=""></li>
+            
+        </ul>
+        <div id="navDiv">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            
+            
+            </div>
+    </div>
+</body>
+</html>

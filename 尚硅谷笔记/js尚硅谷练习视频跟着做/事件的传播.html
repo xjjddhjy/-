@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            background-color: #bfa;
+        }
+        #box2{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(157, 94, 35);
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(203, 170, 255);
+        }
+    </style>
+    <script>
+        function bind(obj, eventStr,callback) {
+                if (obj.attachEvent) {
+                    obj.attachEvent('on'+eventStr,callback);
+                } else {
+                    obj.addEventListener(eventStr, function(){
+                        callback.call(obj);
+                        // 用匿名函数，在函数里我们在调用call改变this
+                    }, false);
+                }
+            };
+            // 事件的传播，源于网景与微软的争斗，网景认为事件先由外面父亲触发在传到儿子，
+            // 微软则相反，最后w3c综合了2者，将事件分成3个阶段
+            // 捕获：由父亲到儿子的捕获，不触发事件
+            // 目标；传到底，捕获到最后的目标，并停止捕获
+            // 冒泡：开始触发，由儿子传到父亲
+            // 想要捕获是就触发的话，将addEventListen第三个参数设置为true,ie8没有捕获阶段,设置不了
+        window.onload=function(){
+            var box1=document.getElementById('box1');
+            var box2=document.getElementById('box2');
+            var box3=document.getElementById('box3');
+            bind(box1,'click',function(){
+                alert('box1')
+            });
+            bind(box2,'click',function(){
+                alert('box2')
+            });
+            bind(box3,'click',function(){
+                alert('box3')
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

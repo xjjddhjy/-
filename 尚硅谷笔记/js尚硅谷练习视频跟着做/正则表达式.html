@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 创建正则表达式对象new RegExp('正则表达式','匹配模式')
+        var reg=new RegExp('a','i');
+        console.log(reg);
+        
+        console.log(reg.test('a'));
+        console.log(reg.test('43asdfg'));
+        console.log(reg.test('Adfdg'));
+// 字面量直接声明正则表达式,var 变量=/正则表达式/匹配模式
+        reg=/a/i;
+        console.log(reg.test('a'));
+        console.log(reg.test('43asdfg'));
+        console.log(reg.test('Adfdg'));
+        // 检查是否有a或b
+        reg=/a|b/i;
+        console.log(reg.test('bacd'));
+        reg=/[abcdefghijk]/;
+        // []分组
+        console.log(reg.test('bret'));
+        reg=/[a-z]/;
+        console.log(reg.test('ertg'));
+        reg=/[A-Za-z]/;
+        console.log(reg.test('a'));
+        // 检查是否有abc或adc或aec
+        reg=/a[bde]c/;
+        console.log(reg.test('aec'));
+        // [^ab]除了a和b
+        reg=/[^ab]/;
+        console.log(reg.test('d'));
+        reg=/[^0-9]/;
+        console.log(reg.test('4634'));
+        // split方法里传入正则
+        var str='1a2b3c4d5e6f';
+        var result=str.split(/[A-Za-z]/);
+        console.log(result);
+        // search()
+        str='hello ab abc';
+        result=str.search('abc');
+        console.log(result);
+        // .匹配任何,用\转义才能只匹配.
+        reg=/\./;
+        console.log(reg.test('.'));
+        // \w任意字母和数字,\b检测单词边界
+        reg=/\bchild\b/;
+        console.log(reg.test('hello child'));
+        // 接受用户输入，去除字符串里的空格
+        var str='  hello  sfasf  ';
+        str=str.replace(/\s/g,'');
+        console.log(str);
+        // 接受用户输入，去除字符串里前后的空格
+        var str='  hello  sfasf  ';
+        str=str.replace(/^\s{0,}|\s{0,}$/g,'');
+        console.log(str);
+        // 电子邮件
+        reg=/^\w{3,}(\.\w{1,}){0,1}@[A-Za-z]{1,}(\.[A-Za-z]{2,5}){1,2}$/;
+        console.log(reg.test('2656271075@qq.com'));
+
+    </script>
+</body>
+</html>

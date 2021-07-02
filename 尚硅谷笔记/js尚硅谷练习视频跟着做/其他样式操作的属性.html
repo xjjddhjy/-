@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #bfa;
+        }
+
+        #box4 {
+            width: 200px;
+            height: 300px;
+            background-color: #bfa;
+            overflow: auto;
+        }
+
+        #box5 {
+            width: 450px;
+            height: 1000px;
+            background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            var box4 = document.getElementById('box4');
+            var box5 = document.getElementById('box5');
+            var btn1 = document.getElementById('btn1');
+            btn1.onclick = function () {
+                // clientWidth,clientHeight获取可见高和宽,不带px,是数字,到padding
+                // clientX是鼠标的位置
+                console.log('box1.clientHeight:' + box1.clientHeight);
+
+                // offsetWidth,offsetHeight到border
+                console.log('box1.offsetHeight:' + box1.offsetHeight);
+                // offsetParent返回最近开启了定位的祖先
+                console.log('box1.offsetParent:' + box1.offsetParent);
+                // offsetLeft,offsetTop返回偏移量，就像css的绝对定位的top和left
+                console.log('box1.offsetLeft:' + box1.offsetLeft);
+                // 有滚动条时元素整个大小，包括看不见的，scrollHeight，scrollWidth
+                console.log('box4.scrollHeight:' + box4.scrollWidth);
+                // scrollLeft,scrollTop,滚动条拉伸了多少,滚动条自带17px，要拉多17px才拉满
+                console.log('box4.scrollLeft:' + box4.scrollLeft);
+                // box4.scrollWidth-box4.scrollLeft等于183时滚动到底,因为450-250-17，滚动条拉了267,183px屏幕可以显示，不用拉
+                console.log('box4.scrollWidth-box4.scrollLeft:' + (box4.scrollWidth - box4.scrollLeft));
+                
+            }
+            box4.onscroll=function(){
+                if(box4.scrollHeight- box4.scrollTop==box4.clientHeight){
+                    var input=document.querySelector('#outer input');
+                    var button=document.querySelector('#outer button');
+                    input.disabled=false;
+                    button.disabled=false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="outer">
+    <div id="box4">
+        <div id="box5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, doloribus ullam alias et possimus quod blanditiis provident perferendis aliquid, aperiam, molestias adipisci. Nemo nostrum iusto tempora, alias excepturi quisquam sit.
+            Sapiente iure consequatur laboriosam. Provident corrupti cum ullam error id qui sapiente obcaecati voluptate fugit, perspiciatis velit hic consequuntur non enim ut optio labore, ea autem nam. Vero, optio quo.
+            Architecto laborum vitae, placeat sed, eaque et animi tempora porro corporis sint, eveniet a! Accusamus nisi esse, ipsum sunt totam debitis sint vero quo itaque doloremque saepe reiciendis molestiae fugit!
+            Fuga, itaque ab ipsum nobis nisi tenetur excepturi eveniet dolorum odio neque recusandae omnis ducimus explicabo voluptates natus, velit ipsa tempore odit non quidem nostrum! Laudantium facilis repellat incidunt reiciendis.
+            Libero quae quod natus facere veniam obcaecati, aperiam accusantium dolores, quibusdam doloremque odit. Ipsam alias quam nobis accusamus maxime laborum debitis numquam incidunt, quaerat voluptas! Ut sit dignissimos autem aut?
+            Natus quo, odio aut impedit voluptate quas distinctio eveniet voluptatem repellendus ex in temporibus omnis rem recusandae debitis perspiciatis. Nostrum aut eos voluptate dolores! Accusamus consectetur unde ut quam facilis?
+            Molestiae officiis eligendi, magnam dolor architecto ab. Ab praesentium numquam molestiae nam, omnis quisquam exercitationem tenetur aliquid commodi vitae inventore rerum optio repellendus ipsam, architecto labore qui, eligendi ipsum doloremque!
+            Quia explicabo adipisci in mollitia veniam recusandae? Hic aut repellat maxime quo corrupti, obcaecati error vitae, sed laborum praesentium reiciendis, perspiciatis officia at molestiae ab eum necessitatibus. Quae, ullam ducimus.
+            Eligendi quae culpa esse, mollitia at dolores veritatis quam itaque, velit accusantium labore harum rem perferendis repellendus, ipsum sapiente voluptatum maiores accusamus pariatur officia voluptatem atque facilis aut! Temporibus, eius.
+            Voluptatum laboriosam tempora doloribus ullam rerum est saepe ipsa, dolorum, error necessitatibus at eligendi similique vitae assumenda. Hic, voluptates quos ratione non eveniet perspiciatis dolores, laborum atque aliquam deleniti laudantium?
+        </div>
+    </div>
+    <input type="checkbox" name="" id="" disabled>我遵守协议
+    <button type="submit" disabled>注册</button>
+</div>
+    <button id="btn1">点我一下</button>
+    <div class="box3" style="position: relative;">
+        <div class="box2" style="position: relative;">
+            <div id="box1"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

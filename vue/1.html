@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 导入vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app" class="app">
+        <!-- 建议用div，因为他没有其他语义 -->
+        {{ message }}
+        <span>{{ message }}</span>
+      </div>
+    <script>
+        // new一个vue对象
+        var app = new Vue({
+        // el:选择器，建议用id，
+        el: '.app',//el设置挂载点，找到el的值作为选择器选到的元素（除了html，body），用data数据替换到上面的{{}}
+        // 在命中的元素内部都会替换{{ message }}
+        data: {
+          message: 'Hello Vue!'
+        }
+      })
+    </script>
+</body>
+</html>

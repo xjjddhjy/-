@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            height: 200px;
+            width: 200px;
+            background-color: #bfa;
+        }
+    </style>
+    <!-- 
+        Navigator代表当前浏览器的信息
+        Location浏览器的地址栏、
+        Window整个浏览器窗口
+        History历史记录
+        Screen显示器相关信息，用于移动端
+        他们都是在window对象去直接点来使用，或者不用.，他们都是全局的
+
+     -->
+    <script>
+        window.onload = function () {
+            //  console.log(window.navigator);
+            //  console.log(navigator);
+            //  console.log(window.navigator.appName);
+            //  window.navigator.appName在ie8-10是微软，在ie11，火狐，chrome都是网景
+            //  ie11设置了navigator很多东西来迷惑我们，让我们识别不了他，想要我们用它
+            // 还剩下userAgent来判断，但是在ie11也快判别不了了
+            console.log(window.navigator.userAgent);
+            // chrome:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36
+            // ie8:Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/4.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; Tablet PC 2.0)
+            // ie8:Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/4.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; Tablet PC 2.0)
+            // ie8:Mozilla/6.0 (compatible; MSIE 10.0; Windows NT 6.1; Win64; x64; Trident/4.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; Tablet PC 2.0)
+            // ie11:Mozilla/5.0 (Windows NT 6.1; WOW64/7.0;SLCC2; .NET CLR 2.0.50727; .NET CLR 3.0.30729;Media Center PC 6.0; .NET4.0C; .NET4.0E; rv:11.0) like Gecko
+            // 但是我们可以通过浏览器是否具有一些方法来判别他，比如有没有addEventListen,attachEvent之类的
+            // 在ie里有个全局对象ActiveXObject是ie特有的
+            // 不过ie11也有这个对象，但是运行下面的判断时会输出我不是ie，因为太多人用这个对象来判别ie了
+            // ie就将window.ActiveXObject类型装换成false来迷惑我们，
+            // 所以用'ActiveXObject' in window最好
+            if (window.ActiveXObject) {
+                console.log('我是ie');
+            } else {
+                console.log('我不是ie');
+            }
+            console.log('ActiveXObject' in window);
+            // history
+            // 访问了几个页面它的length就是几
+            alert(history.length);
+            var btn1 = document.getElementById('btn1');
+            btn1.onclick = function () {
+                // 回退
+                history.back();
+                // 前进
+                history.forward();
+                // 跳转到指定页面，传入整数，1表示向前跳转1个页面
+                history.go()
+            };
+            // location
+            btn1.onmousemove = function () {
+                // 直接就可以返回网址
+                alert(location);
+                // 对它修改可以跳转网页,并会生成历史记录
+                location='http://www.baidu.com';
+                // 跟上面的效果一样
+                location.assign('http://www.baidu.com');
+                // 刷新用location.reload(),不一样的是传入true会强制清空缓存，比如输错密码时让别人连账号也重新输入
+                // location.replace()也会跳转，但不能回退
+
+
+            };
+
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="btn1"> 点我</button>
+    <div id="box1">
+        <a href="./包装类.html">包装类</a>
+    </div>
+</body>
+
+</html>

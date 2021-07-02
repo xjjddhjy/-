@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+   <!-- v-for根据数据生成列表 -->
+    <div id="app" class="app"> 
+        <!-- 传参 -->
+        <input type="button" value="sayhi" @click='doIt(666,555)'>
+        <!-- .enter是回车键，除此之外还有别的可以百度 -->
+       <input type="text" @keyup.enter='sayHi'>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+               
+                
+            },
+            methods:{
+                doIt:function(p1,p2){
+                    console.log(p1,p2);
+                },
+                sayHi:function(){
+                    alert('点到回车了')
+                }
+            }
+            
+            
+        })
+    </script>
+</body>
+
+</html>

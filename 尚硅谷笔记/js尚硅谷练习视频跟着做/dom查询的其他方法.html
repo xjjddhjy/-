@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var body=document.body;
+            var all=document.all;
+            all=document.getElementsByTagName('*')
+            console.log(all);
+            var box2=document.querySelector('.box1 .box2');
+            console.log(box2.innerHTML);
+            var box2=document.querySelectorAll('.box1 .box2');
+            console.log(box2[1].innerHTML);
+        }
+    </script>
+</head>
+<body>
+    <a href=""></a>
+
+    <p></p>
+    <div class="box1">
+        <div class="box2">
+            box2
+        </div>
+        <div class="box2">
+            box22
+        </div>
+    </div>
+</body>
+</html>

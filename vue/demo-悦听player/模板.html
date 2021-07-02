@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>悦听player</title>
+  <!-- 样式 -->
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- 播放器主体区域 -->
+    <div class="play_wrap" id="player">
+      <div class="search_bar">
+        <img src="images/player_title.png" alt="" />
+        <!-- 搜索歌曲 -->
+        <input type="text" autocomplete="off" v-model="query" @keyup.enter="searchMusic" />
+      </div>
+      <div class="center_con">
+        <!-- 搜索歌曲列表 -->
+        <div class='song_wrapper'>
+          <ul class="song_list">
+
+            <li v-for='i in musicList'>
+              <a href="javascript:;" @click='playMusic(i.id)'></a>
+              <b>{{i.name}}</b> <span @click='playMv(i.mvid)' v-if='i.mvid!=0'><i></i></span>
+            </li>
+          </ul>
+          <img src="images/line.png" class="switch_btn" alt="">
+        </div>
+        <!-- 歌曲信息容器 -->
+        <div class="player_con" :class="{playing:isPlay}">
+          <img src="images/player_bar.png" class="play_bar" />
+          <!-- 黑胶碟片 -->
+          <img src="images/disc.png" class="disc autoRotate" />
+          <img src="images/cover.png" :src='musicCover' class="cover autoRotate" />
+        </div>
+        <!-- 评论容器 -->
+        <div class="comment_wrapper">
+          <h5 class='title'>热门留言</h5>
+          <div class='comment_list'>
+            <dl v-for='i in musicCommentArr'>
+              <dt><img :src='i.user.avatarUrl' alt=""></dt>
+              <dd class="name">{{i.user.nickname}} </dd>
+              <dd class="detail">
+                {{i.content}}
+              </dd>
+            </dl>
+          </div>
+          <img src="images/line.png" class="right_line">
+        </div>
+      </div>
+      <div class="audio_con">
+        <audio ref='audio' @play='play' @pause='pause' :src="musicUrl" controls autoplay loop class="myaudio"></audio>
+      </div>
+      <div v-show='isShow' class="video_con" style="display: none;">
+        <video :src='musicMvUrl' controls="controls"></video>
+        <div @click='hidden' class="mask"></div>
+      </div>
+    </div>
+  </div>
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- 官网提供的 axios 在线地址 -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#player',
+      data: {
+        query: '',
+        musicList: [],
+        musicUrl: '',
+        musicCover: '',
+        musicCommentArr: [],
+        isPlay:false,
+        musicMvUrl:'',
+        isShow:false,
+      },
+      methods: {
+        searchMusic: function () {
+          var that = this;
+          axios.get('https://autumnfish.cn/search?keywords=' + this.query)
+            .then(function (response) {
+              that.musicList = response.data.result.songs;
+              // console.log(response.data.result.songs);
+            }, function (err) {
+              console.log(err);
+            })
+        },
+        playMusic: function (id) {
+          var that = this;
+          axios.get('https://autumnfish.cn/song/url?id=' + id)
+            .then(function (response) {
+              that.musicUrl = response.data.data[0].url
+              // console.log(response.data.data[0].url);
+            }, function (err) {
+              console.log(err);
+            })
+
+          axios.get('https://autumnfish.cn/song/detail?ids=' + id)
+            .then(function (response) {
+              that.musicCover = response.data.songs[0].al.picUrl;
+              console.log(response.data.songs[0].al.picUrl);
+            }, function (err) {
+              console.log(err);
+            })
+
+          axios.get('https://autumnfish.cn/comment/hot?type=0&id=' + id)
+            .then(function (response) {
+              that.musicCommentArr = response.data.hotComments;
+              console.log(response.data.hotComments);
+            }, function (err) {
+              console.log(err);
+            })
+        },
+        play: function () {
+          this.isPlay=true
+        },
+        pause: function () {
+          this.isPlay=false
+        },
+        playMv: function (mvid) {
+          var that = this;
+          axios.get('https://autumnfish.cn/mv/url?id=' + mvid)
+            .then(function (response) {
+              console.log(response);
+              that.musicMvUrl=response.data.data.url;
+              that.isShow=true;
+
+              
+            }, function (err) {
+              console.log(err);
+            })
+        },
+        hidden:function(){
+          this.musicMvUrl='';
+          this.isShow=false
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

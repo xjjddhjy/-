@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='./js工具/getStyle和move方法.js'></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(88, 92, 36);
+            position: absolute;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+            top: 200px;
+            left: 0;
+        }
+    </style>
+    <script>
+        
+        window.onload=function(){
+            var btn1=document.getElementById('btn1');
+            var btn2=document.getElementById('btn2');
+            var btn3=document.getElementById('btn3');
+            var btn4=document.getElementById('btn4');
+            var box1=document.getElementById('box1');
+            var box2=document.getElementById('box2');
+            // var num=1;
+            // setInterval(function(){
+            //     console.log(num++);
+            // },1000);
+            // setTimeout只执行一次
+            // var timer=setTimeout(function(){
+            //     console.log(num++);
+            // },3000)
+            // clearTimeout(timer);
+            
+            btn1.onclick=function(){
+                // 开始定时器，持续向右
+                // 获取box1原来的left
+                move(box1,10,800,'left',function(){
+                }) ;  
+            };
+            btn2.onclick=function(){
+                // 开始定时器，持续向右
+                // 获取box1原来的left
+                move(box1,10,0,'left')      ;  
+            };
+            btn3.onclick=function(){
+                move(box2,10,800,'left');
+            };
+            btn4.onclick=function(){
+                // move(box2,10,800,'width');
+                // move(box2,10,800,'height');
+                move(box1,10,800,'width',function(){
+                    move(box1,10,800,'height',function(){
+                        move(box1,10,0,'width',function(){})
+                    })
+                }) ;  
+            };
+            
+            
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">点击按钮box1向右移动</button>
+    <button id="btn2">点击按钮box1向左移动</button>
+    <button id="btn3">点击按钮box2向右移动</button>
+    <button id="btn4">测试按钮</button>
+    <div id="box1">  </div>
+    <div id="box2"></div>
+    <div style="width: 0;height: 1000px;border-left:1px solid red;position:absolute;left:800px;"></div>
+</body>
+</html>

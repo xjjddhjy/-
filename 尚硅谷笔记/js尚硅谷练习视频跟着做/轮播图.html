@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .outer{
+            width: 400px;
+            height: 250px;
+           margin: 100px auto;
+           padding: 10px 10px 60px;
+          
+           background-color: #bfa;
+           text-align: center;
+        }
+        .outer img{
+            width: 400px;
+            height: 250px;
+           
+            
+        }
+        
+    </style>
+    <script>
+        window.onload=function(){
+            var prev=document.getElementById('btn1');
+            var next=document.getElementById('btn2');
+            var img=document.getElementsByTagName('img')[0];
+            prev.onclick=function(){
+                result=img.src.search(/\d{1,2}\.(jpg|png|gif)/);
+                if(img.src[result]==1 & img.src[result+1].match(/\d/)==null){
+                    alert('这是第一张');
+                    return;
+                }
+                
+                if(/\d/.test(img.src[result+1]) & img.src.slice(result,result+2)!=10){
+                    // alert('是数字,且不是10');
+                    img.src=img.src.slice(0,result)+(parseInt(img.src.slice(result,result+2))-1)+img.src.slice(result+2,);
+                    return;
+                }
+                if(img.src.slice(result,result+2)==10){
+                    img.src=img.src.slice(0,result)+9+img.src.slice(result+2,);
+                    return;
+                }
+                
+                img.src=img.src.slice(0,result)+(parseInt(img.src[result])-1)+img.src.slice(result+1,);
+                
+
+            };
+            next.onclick=function(){
+                result=img.src.search(/\d{1,2}\.(jpg|png|gif)/);
+                if(img.src.slice(result,result+2)==13){
+                    alert('这是最后一张');
+                    return;
+                }
+                if(/\d/.test(img.src[result+1])){
+                    // alert('是数字');
+                    
+                    img.src=img.src.slice(0,result)+(parseInt(img.src.slice(result,result+2))+1)+img.src.slice(result+2,);
+                    return;
+                }
+                
+                img.src=img.src.slice(0,result)+(parseInt(img.src[result])+1)+img.src.slice(result+1,);
+                
+            };
+
+        }
+    </script>
+</head>
+<body>
+    <div class="outer">
+        <p>一共13张图片,当前第1张</p>
+        <img src="../../1.jpg" alt="">
+        
+        <button id="btn1">上一张</button>
+        <button id="btn2">下一张</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .playing {
+            border: 3px solid red;
+            box-shadow: 2px 2px 8px 10px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <div id='player'>
+        <input type="text" v-model='query' @keyup.enter='searchMusic'>
+
+        <div>
+            <audio @play='play' @pause='pause' :src="musicUrl" ref='audio' controls autoplay loop></audio>
+            <video :src="mvUrl" controls='controls'></video>
+            <img :class='isPlaying?"playing":""' :src="musicCover" alt="" style='width:60px;height:auto'>
+            <dl v-for='i in hotComments'>
+                <dt style='display:inline'><img :src="i.user.avatarUrl" alt="" style='width:15px;height:auto;'></dt>
+                <dt style='display:inline;font-size: 2px;'>{{i.user.nickname}}</dt>
+                <dt style='font-size: 2px;'>{{i.content}}</dt>
+            </dl>
+            
+            <div>
+                <ul>
+                    <li v-for='i in musicList'>
+                        <b>{{i.name}}</b>
+                        <a href="javascript:;" @click=playMusic(i.id)>播放</a>
+                        <img v-if='i.mvid!=0' src="./turtle.png" alt="" style='width:30px;height:auto'
+                            @click=mvPlay(i.mvid)>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#player',
+            data: {
+                query: '',
+                musicList: [],
+                musicUrl: '',
+                musicCover: '',
+                hotComments: [],
+                isPlaying: false,
+                isShow: false,
+                mvUrl: '',
+
+            },
+            methods: {
+                searchMusic: function () {
+                    var that = this;
+                    axios.get('https://autumnfish.cn/search?keywords=' + this.query)
+                        .then(function (response) {
+                            console.log(response);
+                            that.musicList = response.data.result.songs;
+                        }, function (err) { })
+                },
+                playMusic: function (musicId) {
+                    var that = this;
+                    console.log(musicId);
+                    axios.get('https://autumnfish.cn/song/url?id=' + musicId)
+                        .then(function (response) {
+                            // console.log(response.data.data[0].url);
+                            that.musicUrl = response.data.data[0].url
+                        });
+                    axios.get('https://autumnfish.cn/song/detail?ids=' + musicId)
+                        .then(function (response) {
+                            console.log(response.data.songs[0].al.picUrl);
+                            that.musicCover = response.data.songs[0].al.picUrl;
+                        }, function (error) { })
+                    axios.get('https://autumnfish.cn/comment/hot?type=0&id=' + musicId)
+                        .then(function (response) {
+                            console.log(response.data.hotComments);
+                            that.hotComments = response.data.hotComments
+                        }, function (error) { })
+
+                },
+                play: function () {
+                    console.log('play');
+                    this.isPlaying = true;
+                },
+                pause: function () {
+                    console.log('pause');
+                    this.isPlaying = !true;
+                },
+                mvPlay: function (mvId) {
+                    var that = this;
+                    axios.get('https://autumnfish.cn/mv/url?id=' + mvId).
+                        then(function (response) {
+                            console.log(response.data.data.url);
+                            that.mvUrl = response.data.data.url
+                        }, function (error) { })
+                }
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

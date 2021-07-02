@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var count =document.getElementById('count');
+            var num=1;
+            // 两个参数，回调函数和时间,会返回一个Number类型的数据，标识定时器
+
+            var timer=setInterval(function(){
+                count.innerHTML=num++;
+                if(num==10){
+                clearInterval(timer);
+            }
+            },1000);
+
+            console.log(timer);
+            
+            // 关闭定时器,传入定时器的标识,传入undefined也不报错
+            
+            
+
+
+        }
+    </script>
+</head>
+<body>
+    <h1 id="count">1</h1>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #outer{
+            width: 520px;
+            height: 333px;
+            margin: 50px auto;
+            background-color: yellowgreen;
+            padding: 10px 0px;
+            position: relative;
+            overflow: hidden;
+        }
+       img{
+            width: 500px;
+            height: 333px;
+            
+        }
+        #imgList{
+            list-style: none;
+            width: 4200px;
+            position: absolute;
+            left: -520px;
+        }
+        #imgList li{
+            float: left;
+            margin: 0 10px;
+            
+        }
+        #navDiv{
+            position: absolute;
+            bottom: 15px;
+        }
+        #navDiv a{
+            width: 20px;
+            height: 20px;
+            float: left;
+            background-color: yellow;
+            opacity: 0.5;
+            margin: 0 5px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var imgList=document.getElementById('imgList');
+            var lis=imgList.getElementsByTagName('li');
+            var obj=getComputedStyle(lis[0],null);
+            imgList.style.width=(obj.width+obj.marginLeft*2)*lis.length+'px';
+            var timer=setInterval(function(){
+
+            })
+
+            
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="imgList">
+            <li><img src="../1.jpg" alt=""></li>
+            <li><img src="../2.jpg" alt=""></li>
+            <li><img src="../3.jpg" alt=""></li>
+            <li><img src="../4.jpg" alt=""></li>
+            <li><img src="../5.jpg" alt=""></li>
+            <li><img src="../6.jpg" alt=""></li>
+            <li><img src="../7.jpg" alt=""></li>
+            <li><img src="../8.jpg" alt=""></li>
+        </ul>
+        <div id="navDiv">
+            <a href="javascript:;">1</a>
+            <a href="javascript:;">2</a>
+            <a href="javascript:;">3</a>
+            <a href="javascript:;">4</a>
+            <a href="javascript:;">5</a>
+        </div>
+    </div>
+</body>
+</html>

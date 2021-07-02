@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../iconDemo/iconfont.css">
+    <style>
+        body{
+            
+            /* margin: 0;
+            padding: 0; */
+            background-image: url(../10.jpg);
+            /* background-repeat: no-repeat; */
+            background-size: 100% auto;
+        }
+        #maxbox{
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+            padding: 20px 20px;
+            background-color: rgba(0, 190, 0, 0.5);
+            text-align: center;
+            width: 600px;
+            height: 400px;
+            border-radius: 10px;
+            
+        }
+        #maxbox h1{
+            
+            padding-top:60px ;
+            color: white;
+            font-size: 30px;
+        }
+        #maxbox .inputbox{
+            margin-top: 30px;
+
+        }
+        #maxbox .inputText{
+            margin-top: 20px;
+            
+        }
+        #maxbox .inputText input{
+            border: 0;
+            padding: 6px;
+            border-bottom:1px solid white ;
+            background-color: rgba(1, 2, 1, 0.7);
+            /* color: white;  */
+        }
+        .inputButton{
+            border: 0;
+           
+            margin-top: 20px;
+            width: 100px;
+            height: 30px;
+            border-radius: 20px;
+            background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+        }
+        #sign_up{
+            margin-top: 50px;
+            color: white;
+            font-size: 17px;
+        }
+        #sign_up a{
+            color: coral;
+        }
+        #maxbox .inputText span{
+            color: black;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="maxbox">
+        <h1>登录界面</h1>
+        <div class="inputbox">
+            <div class="inputText">
+                <span class="iconfont icon-people_fill"></span>
+                <input type="text" placeholder="username">
+            </div>
+            <div class="inputText">
+                <span class="iconfont icon-people"></span>
+                <input type="password" placeholder="password">
+            </div>
+            <input type="button" class="inputButton" value='LOGIN'>
+            <div id="sign_up">
+                Don't have account?<a href="#">sign up</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

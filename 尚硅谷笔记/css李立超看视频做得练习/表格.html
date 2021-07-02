@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table2{
+            width: 50%;
+            border: 1px solid red;
+            /* border-spacing: 0px; */
+            border-collapse: collapse;
+            margin: 0  auto;
+        }
+        .table2 td{
+            height: 100px;
+            border: 1px red solid;
+            vertical-align: center;
+            text-align: right;
+        }
+        tbody>tr:nth-child(odd){
+            background-color: #bfa;
+            /* odd,2n+1,2n,even*/
+        }
+        .box1{
+            width: 300px;
+            height: 300px;
+            background-color: #bfa;
+            display: table-cell;
+            /* 开启table-cell相当于变成了td */
+             /* 设置td里的内容的垂直居中 */
+            vertical-align:middle;
+           
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(193, 170, 255);
+             /* 设置td里的内容的水平居中 */
+             margin: 0px auto;
+             line-height: 40px;
+            
+        }
+        .box3{
+            width: 10px;
+            height: 10px;
+            background-color: red;
+        }
+        .box1{
+            background-color: red;
+            width: 300px;
+            height: 300px;
+        }
+        .box2{
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+   
+    <div>今天天气正不错 <span>hello额</span></div>
+    <!-- <table border="1px" width='50%' align="center">
+        <thead>
+            <tr>
+                <td>日期</td>
+                <td>收入</td>
+                <td>支出</td>
+                <td>合计</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>2020.1.1</th>
+                <th>500</th>
+                <th>200</th>
+                <th>300</th>
+            </tr>
+            
+            <tr>
+                <td>2020.1.1</td>
+                <td>500</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>2020.1.1</td>
+                <td>500</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>合计</td>
+                <td>300</td>
+                
+            </tr>
+        </tfoot>
+    </table> -->
+    <table class="table2">
+        <tr>
+            <td><div class="box3"></div></td>
+            <td>b</td>
+            <td>c</td>
+            <td>d</td>
+            <td>e</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

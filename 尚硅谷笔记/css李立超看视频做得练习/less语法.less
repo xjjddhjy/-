@@ -1,0 +1,30 @@
+body{
+    width: 100px;
+    height: 100px;
+}
+@a:200px;
+@b:#bfa;
+@c:box6;
+.@{c}{
+    width: @a;
+    background-image: url('@{c}/1.png');
+}
+@d:115px;
+.box2{
+    @d:120px;
+    width: @d;;
+}
+.box3{
+    width: @d;
+    height: $width;
+    &:hover{
+        color: @b;
+    }
+}
+// &表示父元素
+.box4:extend(.box2){
+    color: #bfa;
+}
+.box5{
+    .box2();
+}

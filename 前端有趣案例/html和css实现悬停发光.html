@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+
+        }
+        .container{
+            display:flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            width:auto;
+            height:500px;
+            background-color: black;
+        }
+        .container a{
+            position: relative;
+            display: block;
+            width: 140px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+          
+            color: aqua;
+            text-decoration:none ;
+            /* 过度 */
+            transition:all 0.3s ease-in-out;
+            /* hue-rote是颜色滤镜可以加不同度数改变颜色，用calc自动计算，还有var函数
+            来调用每个a不同的--i值*/
+            filter: hue-rotate(calc(var(--i)*60deg));
+            /* calc(var(--i)*60deg) */
+            
+
+        }
+        .container a::before,.container a::after{
+            content:'';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid aqua; 
+            /* 最后的3秒是延迟时间 */
+            transition:all 0.3s ease-in-out 0.3s;
+        }
+        .container a::before{
+            top:0;
+            left: 0px;
+            border-right: 0;
+            border-bottom: 0;
+        }
+        .container a::after{
+            
+            right:0;
+            bottom: 0;
+            border-left: 0;
+            border-top: 0;
+
+        }
+        .container a:hover{
+            background-color: aqua;
+            color:#000;
+            box-shadow: 0 0 50px aqua;
+            /* 下倒影 */
+            -webkit-box-reflect: below 1px 
+            linear-gradient(transparent,rgba(0,0,0,0.3));
+            /* 属性延迟生效 */
+            transition-delay: 0.4s;
+            
+        }
+        .container a:hover::before,
+        .container a:hover::after{
+            width:138px;
+            height:58px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="javascript:void(0):" style='--i:1'>1</a>
+        <a href="javascript:void(0):" style='--i:2'>2</a>
+        <a href="javascript:void(0):" style='--i:3'>3</a>
+        <a href="javascript:void(0):" style='--i:4'>4</a>
+        <a href="javascript:void(0):" style='--i:5'>5</a>
+    </div>
+</body>
+</html>

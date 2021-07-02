@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <div id='imgdiv'>
+
+        
+        <div>
+            <a href="javascript:void(0)" v-show='index>=1' @click='sub'>
+                <img style="width:50px;height : 50px;top:50px;left:50px" src="./1.jpg" alt="">
+            </a>
+        <img :src='imgArr[index]' alt="">
+        <a href="javascript:void(0)" v-show='index<13' @click='add'>
+            <img style="width:50px;height : 50px;top:1000px;left:500px" src="./1.jpg" alt="">
+        </a>
+        </div>
+
+        
+
+
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#imgdiv',
+            data: {
+                imgArr: ["./1.jpg",
+                    "./2.jpg",
+                    "./3.jpg",
+                    "./4.jpg",
+                    "./5.jpg",
+                    "./6.jpg",
+                    "./7.jpg",
+                    "./8.jpg",
+                    "./9.jpg",
+                    "./10.jpg",
+                    "./11.jpg",
+                    "./12.jpg",
+                ],
+                index: 12,
+
+
+            },
+            methods: {
+                add: function () {
+                    this.index++;
+                    console.log(this)
+                },
+                sub: function () {
+                    this.index--;
+
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

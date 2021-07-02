@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <div id='app'>
+        <div class='input-num'>
+            <button @click='sub'>-</button>
+            <span>{{num}}</span>
+            <button @click='add'>+</button>
+            <img v-show='isShow' alt="" src="//www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png">
+            <img v-if='isShow' alt="" src="//www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png">
+            <button @click='changeIsShow' >改变</button>
+        
+        </div>
+    </div>
+    <div>
+        
+    </div>
+    <script>
+        var app = new Vue({
+            data: {
+                num: 1,
+                isShow:false,
+            },
+            el: '#app',
+            methods: {
+            add:function(){ 
+                this.num++;
+                console.log(this)
+            },
+            sub:function(){
+                this.num--;
+            },
+            changeIsShow:function(){
+                this.isShow=!this.isShow;
+            }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // let a={
+    //   a:1
+    // }
+    // function print(){
+    //   console.log(this.a);
+    //   console.log(this);
+    // }
+    // let b=print.apply(a)
+    // console.log(b);
+
+
+    // function create(Con, ...args) {
+    //   // 创建空对象
+    //   let obj = {};
+    //   // 设置空对象的原型(链接对象的原型)
+    //   obj._proto_ = Con.prototype;
+    //   // 绑定 this 并执行构造函数(为对象设置属性)
+    //   let result = Con.apply(obj, args)
+    //   console.log(result);
+    //   // 如果 result 没有其他选择的对象，就返回 obj 对象
+    //   return result instanceof Object ? result : obj;
+    // }
+    // // 构造函数
+    // function Test(name, age) {
+    //   this.name = name
+    //   this.age = age
+    // }
+    // Test.prototype.sayName = function () {
+    //   console.log(this.name)
+    // }
+    // // 实现一个 new 操作符
+    // const a = create(Test, '小鹿', '23')
+    // console.log(a.age)
+
+    //     var obj = {
+    // name:'小鹿'
+    // }
+    // console.log('toLocaleString' in obj) // true
+
+    // var num = 10;
+    // var obj = { num: 20 };
+    // obj.fn = (function (num) {
+    //   this.num = num * 3;
+    //   num++;
+    //   console.log(obj.num,num);
+    //   return function (n) {
+
+    //     this.num += n;
+    //     num++;
+    //     console.log(this,'  ',num);
+    //   }
+    // })(obj.num)
+    // var fn = obj.fn;
+    // fn(5)
+    // obj.fn(10)
+    // console.log(num, obj.num)
+    // 22 23 65 30
+
+    // let a={
+    //   a:1,
+    //   b:2,
+    //   c:3
+    // }
+    // for(let i in a){
+    //   console.log(i);
+    // }
+    // let ary = [1, 2, 1, 1, 1, 2, 3, 3, 3, 2]
+    // let obj = {}
+    // for (let i = 0; i < ary.length; i++) {
+    //   let item = ary[i]
+    //   if (obj[item]) {
+    //     console.log(obj[item],item);
+    //     // 将最后一项填补当前项
+    //     ary[i] = ary[ary.length - 1]
+    //     // 数组长度减一
+    //     ary.length--;
+    //     // 索引减-
+    //     i--;
+    //     continue;
+    //   }
+    //   obj[item] = item
+    // }
+
+    // ary = new Set(ary);
+    // ary=Array.from(ary)
+    // console.log(ary,typeof ary)
+
+    // console.log(obj)
+
+    let arr = [1, 2, 3]
+    let sum = arr.reduce(function (acc, element) {
+      console.log(acc, element);
+      return acc + element;
+    }, 0) // 6
+
+
+    // var reg1=new RegExp('(k)')
+    // console.log(reg1.exec('325k'));
+    function formatDate(date, fmt) {
+      if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+      }
+      let o = {
+        'M+': date.getMonth() + 1,
+        'd+': date.getDate(),
+        'h+': date.getHours(),
+        'm+': date.getMinutes(),
+        's+': date.getSeconds()
+      };
+      for (let k in o) {
+        if (new RegExp(`(${k})`).test(fmt)) {
+          let str = o[k] + '';
+          console.log(RegExp.$1,str,padLeftZero(str));
+          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
+        }
+      }
+      return fmt;
+    };
+
+    function padLeftZero(str) {
+      return ('00' + str).substr(str.length);
+    };
+    var data1=new Date(1560598160000)
+    var d1=formatDate(data1,'yyyy-MM-dd')
+    console.log(d1);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-show根据表达式的真假切换元素的显示和隐藏(操纵dom元素) -->
+    <!-- 区别:v-show控制这个元素的display属性，v-if控制整个元素是否存在 -->
+    <!-- 频繁切换就用v-show,操作Dom对性能消耗大 -->
+    <div id="app" class="app"> 
+        <button @click='toggleIsShow'>切换</button>   
+        <p v-if='true'>我是p</p>
+        <p v-if='isShow'>我是p</p>
+        <p v-show='isShow'>我是p</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                isShow:false,
+                age:17
+            },
+            methods:{
+                toggleIsShow:function(){
+                    this.isShow=!this.isShow
+                }
+            }
+            
+            
+        })
+    </script>
+</body>
+
+</html>

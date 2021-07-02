@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 兼容,封装一个getStyle
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                return getComputedStyle(obj, null)[name];
+            } else {
+                return obj.currentStyle[name];
+            }
+        }
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            var btn1 = document.getElementById('btn1');
+            var btn2 = document.getElementById('btn2');
+            btn1.onclick = function () {
+                // 修改的是内联样式
+                box1.style.width = '200px';
+                box1.style.height = '300px';
+                box1.style.backgroundColor = '#bfa';
+            };
+            btn2.onclick = function () {
+                // 读取的也是内联样式，想要读取当前样式要用obj.currentStyle（ie)
+                // 或getComputedStyle(正常浏览器),第一个参数是对象，第二个参数是伪元素，一般写null
+                console.log(box1.style.width);
+                getStyle(box1,'width')
+                
+
+
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <button id="btn1">设置样式</button>
+    <button id="btn2">读取样式</button>
+</body>
+
+</html>

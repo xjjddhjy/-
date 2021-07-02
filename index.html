@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='div0'>
+    <p name='pn'>
+      1
+    </p>
+    <p name='pn'>
+      2
+    </p>
+    <p name='pn'>
+      3
+    </p>
+    <p name='pn'>
+      4
+    </p>
+    <a id='aid' title='getted'>666
+
+    </a>
+    <a id='aid2'>
+      a
+    </a>
+  </div>
+  <div id='div'>
+    <p id='pid'>
+      div的p元素
+    </p>
+  </div>
+  <script>
+    // function getName(){
+    //     var count=document.getElementsByName('pn');
+    //     alert(count.length);
+    //     var p=count[0];
+
+    //     p.innerHTML='world';
+    // }
+    // function getAttr(){
+    //     var adx=document.getElementById('aid');
+    //     var ap=adx.getAttribute('id');
+    //     alert(ap)
+
+    // }
+    // function setAttr(){
+    //     var a=document.getElementById('aid2');
+    //     a.setAttribute('title','shezhi');
+    //     var attr=a.getAttribute('title');
+    //     alert(attr)；
+
+    // }
+    // function getChildNode(){
+    //     var childnode=document.getElementsByTagName('ul')[0].childNodes;
+    //     alert(childNode.length);
+
+    // }
+    function addNode() {
+      var div = document.getElementById('div');
+      var node = document.getElementById('pid');
+      var newnode = document.createElement('p');
+      newnode.innerHTML = '动态添加第一个p元素';
+      div.insertBefore(newnode, node)
+    }
+    addNode()
+    function removeNode() {
+      var div = document.getElementById('div0');
+
+      var p = div.removeChild(div.childNodes[1]);
+    }
+    removeNode()
+    function getSize() {
+      var width = document.documentElement.offsetWidth;
+      var height = document.documentElement.offsetHeight;
+      alert(width + '' + height);
+    }
+    getSize()
+    // removeNode()
+    // document.write(date.getFullYear())
+
+
+    // function startTime(){
+    //     var today=new Date();
+    //     var h=today.getHours();
+    //     var m=today.getMinutes();
+    //     var s=today.getSeconds();
+    //     var m=checkTime(m);
+    //     var s=checkTime(s);
+    //     document.getElementById('timetxt').innerHTML=h+':'+m+':'+s;
+    //     t=setTimeout(function(){startTime()}
+    //     ,1000)
+    // }
+    // function checkTime(i){
+    //     if(i<10){
+    //         i='0'+i;
+    //     }
+    //     return i;}
+    // var a=['fh','fdh','biren'];
+    // var b=[2,3,4];
+    // var c =a.concat(b);
+    // document.write(a.sort(function(a,b){
+    //     return a-b
+    // })).reverse()
+    // startTime()
+
+    // let arr=[1,2,3,54,7,568,,56976,967,670,3423,324]
+    // let arr2=arr.sort((a,b)=>a-b  )
+    // console.log(arr2);
+
+    // const 
+    //   todos= [
+    //     { id: 1, text: '...', done: true },
+    //     { id: 2, text: '...', done: 1 }
+    //   ]
+
+    //   let doneTodos = todos.filter(todo => todo.done)
+    //   console.log(doneTodos);
+    async function async1() {
+      console.log('async1 start')
+      const wait=await 123
+      console.log('async1 end')
+      console.log(wait);
+    }
+    async function async2() {
+      console.log('async2')
+      return 1
+    }
+    async1()
+    console.log('script start')
+    console.log(wait);
+
+
+  </script>
+
+</body>
+
+</html>

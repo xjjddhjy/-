@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*  */
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box1{
+            width: 800px;
+            height: 800px;
+            background-color: silver;
+            overflow: hidden;
+            
+        }
+        .box1 div{
+            width: 100px;
+            height: 100px;
+            margin-top: 100px;
+            margin-left: 0px;
+            
+        }
+        .box2{
+            background-color: #bfa;
+            /* transition-property: all ;
+            transition-duration :2s;
+            transition-timing-function: ease; */
+            /* animation-name:关键帧名字 
+            animation-iteration-count执行次数infinite
+            animation-direction: normal默认从from到to
+            reverse从to到from，alternate往复执行;
+            animation-play-state: running默认值;动画的执行状态
+            paused暂停
+            animation-fill-mode: none;动画的填充模式，none动画执行完回到初始位置
+            forwards停在结束位置，backward等的时候就是from(配合 animation-delay用)
+            both
+            
+            */
+            animation: test 2s 2 1s alternate;
+            /* animation-name: test;
+            animation-duration: 2s;
+            animation-delay: 2s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count:2 ;
+            animation-direction: normal;
+            animation-play-state: running;
+            animation-fill-mode: backwards; */
+            /* transition-property;all,height,
+            transition-timing-function:ease默认值,linear匀速,ease-in加速,ease-out减速，
+            ease-in-out慢快慢,cubic-bezier(),steps(1s,end或start默认值表示在开始或结束开始执行),
+            transition-duration ,2s,2000ms,
+
+            transition-delay:2s延迟2s再执行
+             */
+
+        }
+        .box1:hover .box2{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            margin-left: 700px;
+        }
+        .box1:hover .box3{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            margin-left: 700px;
+        }
+        .box3{
+            background-color: orange;
+            width: 100;
+            height: 100px;
+            /* transition-timing-function:steps(3,end);
+            transition-duration :2s;
+            transition-property: all ;
+            transition-delay: 2s; */
+            transition: margin-left 2s ;
+        }
+        @keyframes test{
+            from{
+                margin-left:0px;
+                background-color: orange;
+            }
+            /* from表示开始位置 */
+            to{
+                margin-left:700px;
+                background-color: red;
+            }
+            /* to表示结束位置 */
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+        <!-- <div class="box3"></div> -->
+    </div>
+</body>
+</html>

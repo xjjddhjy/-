@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function bind(obj, eventStr,callback) {
+                if (obj.attachEvent) {
+                    obj.attachEvent('on'+eventStr,callback);
+                } else {
+                    obj.addEventListener(eventStr, function(){
+                        callback.call(obj);
+                        // 用匿名函数，在函数里我们在调用call改变this
+                    }, false);
+                }
+            };
+        window.onload = function () {
+            var btn1 = document.getElementById('btn1');
+            btn1.onclick = function () {
+                alert(1);
+            };
+            // 会覆盖前面的绑定函数,不想覆盖的话要用addEventListener,
+            // 三个参数,事件名，回调函数，是否在捕获阶段触发
+            // 不过addEventListener不支持ie8，要用attachEvent
+            // 参数1:事件名,2:毁掉函数
+            btn1.onclick = function () {
+                alert(2);
+            };
+            btn1.addEventListener('click', function () {
+                alert('3');
+            }, false);
+            btn1.addEventListener('click', function () {
+                alert(this);
+                // 对于chrome,这里this是btn,
+                // 对于ie8是window
+            }, false);
+            // 兼容,而且this要统一,用call叫别人去调
+            
+            bind(btn1,'mousemove',function(){
+                alert(this);
+            });
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn1">
+        点我
+    </button>
+</body>
+
+</html>

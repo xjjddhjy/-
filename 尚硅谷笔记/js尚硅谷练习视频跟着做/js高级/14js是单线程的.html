@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        setTimeout(function(){
+            console.log(1);
+            alert(1)
+        },10000)
+        setTimeout(function(){
+            console.log(2);
+            alert(2)
+        },20000)
+        function fun(){
+            console.log('fun');
+
+        }
+        fun()
+        console.log('alert之前');
+        alert('alert')//暂停当前主线程的执行，计时仍然在计时，
+        // 点击确定后恢复程序执行，并且立即运行定时器的代码，（只要计时过了）
+        console.log('alety之后');
+        // js引擎执行代码的流程：
+        // 先执行初始化代码，包含特别的代码，回调函数（异步执行）
+        // 设置定时器
+        // 绑定监听
+        // 发送ajax
+        // 后面某个时刻才执行回调代码
+        // js是单线程的，为了与用户互动，操作DOM
+        // 否则会有很复杂的同步问题
+    </script>
+</head>
+<body>
+   
+</body>
+</html>

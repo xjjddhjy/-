@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../资料/重置样式表/reset.css">
+    <link rel="stylesheet" href="../../css李立超看视频做得练习/fa/css/all.css">
+    <style>
+        a{
+            text-decoration: none;
+        }
+        #my_menu{
+            width: 150px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #my_menu>div{
+            width: 150px;
+           line-height: 30px;
+           background-color: rgb(98,98,101);
+           
+           
+        }
+        #my_menu>div>a{
+            display: block;
+            color: white;
+            padding-left:12px ;
+        }
+        #my_menu>div>a:nth-of-type(1):before{
+            content:  "\f0d7";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+
+            margin-right: 5px;
+        }
+        
+        #my_menu>.collapsed>a:nth-of-type(1):before{
+
+            content:  "\f0da";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-right: 5px;
+        }
+       
+        #my_menu>div{
+            height: 180px;
+            overflow: hidden;
+            /* transition:0.5s; */
+        }
+         #my_menu>div.collapsed{
+            height: 30px;
+            overflow: hidden;
+            /* transition:0.5s; */
+        }
+        #my_menu>div>a:not(:nth-of-type(1)){
+            display: block;
+            background-color: rgb(239,238,239);
+            padding: 0 10px;
+            color: rgb(0,91,104);
+            
+        }
+        #my_menu>div>a:not(:nth-of-type(1)):hover::after{
+            content: "\f061";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: white;
+            margin-left: 50px;
+        }
+         #my_menu>div>a:not(:nth-of-type(1)):hover{
+              color: white;
+              background-color: rgb(0,91,104);
+         }
+        
+    </style>
+    <script src="../js工具/四个操作类名方法.js"></script>
+    <script src="../js工具/getStyle和move方法.js"></script>
+    <script>
+        window.onload=function(){
+            
+            // 当div有collapsed类时就折叠
+            // element.previousSibling
+            var divs=document.querySelectorAll('#my_menu>div');
+            var divs_as=document.querySelectorAll('#my_menu>div>a:nth-of-type(1)');
+            var openDiv=document.querySelector('#my_menu>div');
+            for(var i=0;i<divs.length;i++){
+                divs_as[i].onclick=function(){
+                    // 在切换类之前，获取元素的高度
+
+                    var parentDiv=this.parentNode;
+                    toggleMenu(parentDiv);
+                   if(parentDiv!=openDiv && !hasClass(openDiv,'collapsed')){
+                    // toggleClass(openDiv,'collapsed');
+                    toggleMenu(openDiv);
+
+                   }
+                   
+                   openDiv=parentDiv;
+                }
+            }
+            // 提取函数，用来切换菜单的折叠
+            function toggleMenu(obj){               
+                    // 在切换类之前，获取元素的高度              
+                    var begin=obj.offsetHeight;
+                    // 获取开始和结束的高度，并用内联样式设置回去
+                    // 才开始执行动画
+                   toggleClass(obj,'collapsed');
+                   var end=obj.offsetHeight;
+                    
+                   console.log(begin,end);
+                   obj.style.height=begin+'px';
+                     move(obj,10,end,'height',function(){
+                        //  动画执行完毕删除内联样式，不让他妨碍我们
+                        obj.style.height='';
+                     });
+            }           
+        }
+    
+    </script>
+</head>
+<body>
+    <div id="my_menu" class="sdmenu">
+        <div>
+            
+           <a href="#">在线工具</a> 
+           
+            <a href="#">在线工具</a>
+            <a href="#">在线工具</a>
+            <a href="#">在线工具</a>
+            <a href="#">在线工具</a>
+            <a href="#">在线工具</a>
+            <a href="#">在线工具</a>
+       
+        </div>
+        <div class="collapsed">
+            
+            <a href="#">在线工具</a> 
+            
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+        
+         </div>
+         <div class="collapsed">
+            
+            <a href="#">在线工具</a> 
+            
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+        
+         </div>
+         <div class='collapsed'>
+            
+            <a href="#">在线工具</a> 
+            
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+             <a href="#">在线工具</a>
+        
+         </div>
+
+    </div>
+</body>
+</html>

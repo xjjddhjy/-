@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+        span{
+            background-color: yellow;
+        }
+        
+    </style>
+    <script>
+        window.onload=function(){
+            var span=document.getElementsByTagName('span')[0];
+            span.onclick=function(){
+                alert('我是span');
+                // 取消冒泡,所有浏览器都支持
+                event.cancelBubble=true;
+            };
+            var box1=document.getElementById('box1');
+            box1.onclick=function(){
+                alert('我是box1')
+            };
+            document.body.onclick=function(){
+                alert('我是body')
+            };
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+        box1
+        <span>我是span</span>
+        <div id="box2">
+            box2
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://wxgw.aiot.lenovo.com.cn/node-jielong/record/baoming" autocomplete="off" method='post'>
+       文本框 <input type="text" name="username" value="1" autocomplete="off"><br><br>
+       <!-- autocomplete自动补全,
+        disabled禁用不提交,
+        hidden隐藏,
+        readonly会提交不能修改,
+        autofocus自动获取焦点 -->
+       密码库 <input type="password" name="password" value="1" autofocus><br><br>
+      
+       单选<input type="radio" name="hello" value="a" checked hidden>
+       <input type="radio" name="hello" value="b"><br><br>
+        <!-- 单选name要一致 ,checked可以将单选按钮设置为默认选中-->
+        多选框<input type="checkbox" name="c1" value="c1">
+        <input type="checkbox" name="c2" value="c2" checked>
+        <input type="checkbox" name="c3" value="c3">
+        <input type="checkbox" name="c4" value="c4">
+        <input type="checkbox" name="c5" value="c5">
+        <input type="checkbox" name="c6" value="c6">
+        <br><br>
+        下拉列表<select name="habuha" id="">
+            <option value="ha">ha</option>
+            <option value="buha">buha</option>
+        </select><br><br>
+        颜色输入框<input type="color"><br>
+        邮箱<input type="email">
+        <textarea name="saysth" id="" cols="30" rows="10">666</textarea>
+        无作用按钮<input type="button" value="无作用按钮">
+        重置按钮<input type="reset" value="123">
+        提交 <input type="submit"><br><br>
+        <textarea name="content" id="" cols="30" rows="10">[{
+            "title": "姓名",
+            "value": {
+                "value": "谢建军"
+            },
+            "type": "input",
+            "score": 0
+        }, {
+            "title": "今日体温是否正常?",
+            "value": {
+                "isOther": false,
+                "value": "正常",
+                "otherValue": ""
+            },
+            "type": "radio",
+            "score": 0
+        }, {
+            "title": "今日是否有咳嗽、乏力、肌肉酸痛、呼吸困难等症状?",
+            "value": {
+                "isOther": false,
+                "value": "无",
+                "otherValue": ""
+            },
+            "type": "radio",
+            "score": 0
+        }, {
+            "title": "您是否于今日返回到工作地？",
+            "value": {
+                "isOther": false,
+                "value": "我一直在/之前已回到工作地",
+                "otherValue": ""
+            },
+            "type": "radio",
+            "score": 0
+        }, {
+            "title": "今日是否接触过感染人员/疑似病例/武汉、湖北等重点区域人员或其他高风险人员",
+            "value": {
+                "isOther": false,
+                "value": "没有",
+                "otherValue": ""
+            },
+            "type": "radio",
+            "score": 0
+        }, {
+            "title": "是否有其他与疫情相关的、需要提醒或注意的情况？",
+            "value": {
+                "isOther": false,
+                "value": "没有",
+                "otherValue": ""
+            },
+            "type": "radio",
+            "score": 0
+        }]</textarea>
+        <textarea name="baomingId" id="" cols="30" rows="10">6012a9fdbc635e003e40c3e9</textarea>
+        <textarea name="_id" id="" cols="30" rows="10">6012a9e6bc635e003e40c3c8</textarea>
+        <textarea name="msgHasSecured" id="" cols="30" rows="10">true</textarea>
+        <textarea name="timeZone" id="" cols="30" rows="10">-480</textarea>
+        <textarea name="userId" id="" cols="30" rows="10">5ffbbbadbc635e003e286d37</textarea>
+        <textarea name="createdByUser" id="" cols="30" rows="10">5ffbbbadbc635e003e286d37</textarea>
+        <textarea name="userId" id="" cols="30" rows="10">{
+            "avatarUrl": "https://thirdwx.qlogo.cn/mmopen/vi_32/3K0mwZ0ldkbXsYnWiaCjl1SpicOIibWQRicImUvr78WkndreZ8Wcvzt7ZEJM48J4UDoGs7zd4MX1ia67ksdicUIuC3Kw/132",
+            "nickName": "谢建军"
+        }</textarea>
+        <textarea name="deviceInfo" id="" cols="30" rows="10">{
+            "brand": "iPhone",
+            "model": "iPhone 7<iPhone9,3>",
+            "platform": "ios"
+        }</textarea>
+        <textarea name="currentTime" id="" cols="30" rows="10">1611844169635</textarea>
+        <textarea name="minDateTime" id="" cols="30" rows="10">1611763200000</textarea>
+        
+    </form>
+</body>
+</html>

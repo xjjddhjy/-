@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person (name,age){
+            this.name=name
+            this.age=age
+        }
+        function Student(name,age,price){
+            Person.call(this,name,age)//相当于this.Person(name,age)
+            // 这里能用Person这个方法给Student添加属性，并没有继承
+            // 只是用了call函数改变了this的指向
+            // 实际用call和继承两种方法都可以，也就有了后面的组合继承
+            this.price=price
+        }
+        var s=new Student('Tom',20,14000)
+        console.log(s.name,s.age,s.price);
+    </script>
+</body>
+</html>

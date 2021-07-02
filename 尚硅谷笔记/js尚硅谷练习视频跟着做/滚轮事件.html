@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+    <script>
+        function bind(obj, eventStr, callback) {
+            if (obj.attachEvent) {
+                obj.attachEvent('on' + eventStr, callback);
+            } else {
+                obj.addEventListener(eventStr, function () {
+                    callback.call(obj);
+                    // 用匿名函数，在函数里我们在调用call改变this
+                }, false);
+            }
+        };
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            // 不过火狐不支持onmousewheel方法
+            // 要用DOMMouseScroll,这个事件要用addEventListener函数来绑定
+            box1.onwheel = function () {
+                // event.wheelDelta获取滚轮方向,向上-，向下+，
+                // 但是火狐不支持，火狐用event.detail,向上+,向下-
+                w1 = getComputedStyle(box1, null).height;
+                result = Number(/\d{1,}/.exec(w1)[0]);
+                if (event.wheelDelta) {
+                    if (event.wheelDelta > 0) {
+                        box1.style.height = result + 10 + 'px';
+                        console.log(result);
+                    } else {
+                        box1.style.height = result - 10 + 'px';
+                        console.log(result);
+                    }
+                }else{
+                    if (event.detail < 0) {
+                        box1.style.height = result + 10 + 'px';
+                        console.log(result);
+                    } else {
+                        box1.style.height = result - 10 + 'px';
+                        console.log(result);
+                    }
+                }
+                // 取消滚动式滚动条也滚动的默认行为,火狐用addEventListener绑定的方法不能用return false取消
+                // 要用event.preventDefault()方法
+                return false;
+
+
+
+            }
+            // 火狐要用下面的
+            // bind(box1,'DOMMouseScroll',function(){
+            //     alert('滚了')
+            // })
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="box2">
+
+        </div>
+    </div>
+</body>
+
+</html>

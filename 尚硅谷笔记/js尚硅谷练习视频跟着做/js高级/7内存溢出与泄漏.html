@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(){
+            // 意外的全局变量，没有用var ，函数执行完不消除，外部能用到
+            a=3
+            console.log(a);
+        }
+        fn()
+        console.log(a);
+    </script>
+</body>
+</html>

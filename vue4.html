@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <div id='app'>
+        <input type="button" value='add1' @click='add'>
+    <input type="button" value='remove1' @click='remove'>
+        <ul>
+            <li v-for='(i,index) in arr'>
+                {{i}}人渣{{index}}
+
+
+            </li>
+            <h2 v-for='i in vegetables' v-bind:title='i.name'>{{i.name}}</h2>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                arr: ['北京', '上海', '广州', '深圳'],
+                vegetables: [
+                    { name: '1' },
+                    { name: '2' }
+                ]
+                
+            },
+            methods: {
+                    add: function () {
+                        this.vegetables.push({ name: 'huacaichaodan' })
+                    },
+                    remove: function () {
+                        this.vegetables.shift()
+                    }
+                }
+        
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 50px auto;
+        }
+
+        table td,
+        table th {
+            border: 1px solid black;
+            padding: 2px;
+            min-width: 50px;
+        }
+
+        .tianjia {
+            border: 1px solid red;
+            padding: 10px 10px 5px;
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        .tianjia h3 {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        #submit {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        function delA(){
+            var allA = document.getElementsByTagName('a');
+            
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = function () {
+                    var tbody = this.parentNode.parentNode.parentNode;
+                    var tr = this.parentNode.parentNode;
+                    var name=tr.getElementsByTagName('td')[0].innerHTML;
+                    if (confirm('确认删除'+name+'吗?')) {
+                        tbody.removeChild(tr);
+                    }
+                }
+            };
+        }
+        window.onload = function () {
+            delA();
+            var tianxiexiang=document.querySelectorAll('.tianxiexiang input');
+            var submit=document.querySelector('#submit');
+            submit.onclick=function(){
+                var tbody = document.getElementsByTagName('tbody')[0];
+                var tr = document.createElement('tr');
+                // // 读取数值
+                // var get1=tianxiexiang[0].value;
+                // var get2=tianxiexiang[1].value;
+                // var get3=tianxiexiang[2].value;
+                // // 创建文本节点
+                // var text1=document.createTextNode(get1);
+                // var text2=document.createTextNode(get2);
+                // var text3=document.createTextNode(get3);
+                
+                // // 创建元素节点
+                // var td1=document.createElement('td');
+                // var td2=document.createElement('td');
+                // var td3=document.createElement('td');
+                // var td4=document.createElement('td');
+                // var a=document.createElement('a');
+                // a.href='#';
+                // a.innerHTML='delete';
+                // a.onclick=delA;
+                // // 
+                // td1.appendChild(text1);
+                // td2.appendChild(text2);
+                // td3.appendChild(text3);
+                // td4.appendChild(a);
+                // // 
+                
+                // tr.appendChild(td1);
+                // tr.appendChild(td2);
+                // tr.appendChild(td3);
+                // tr.appendChild(td4);
+                
+                // tbody.appendChild(tr);
+                // 这个比上面的简单
+                var get1=tianxiexiang[0].value;
+                var get2=tianxiexiang[1].value;
+                var get3=tianxiexiang[2].value;
+                tr.innerHTML='<td>'+get1+'</td>'+
+                '<td>'+get2+'</td>'+
+                '<td>'+get3+'</td>'+
+                '<td><a href="#">delete</a></td>';
+                var a=tr.getElementsByTagName('a')[0];
+                
+                a.onclick=delA;
+                tbody.appendChild(tr);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr class="">
+            <th class="">Name</th>
+            <th class="">Email</th>
+            <th class="">Salary</th>
+            <th class=""></th>
+
+        </tr>
+        <tr class="">
+            <td class="">Jerry</td>
+            <td class="">abc@qq.com</td>
+            <td class="">10000</td>
+            <td class=""><a href="#">delete</a></td>
+
+        </tr>
+        <tr class="">
+            <td class="">Jerry</td>
+            <td class="">abc@qq.com</td>
+            <td class="">10000</td>
+            <td class=""><a href="#">delete</a></td>
+
+        </tr>
+
+    </table>
+    <div class="tianjia">
+        <h3 class="">添加新员工</h3>
+        <div class="tianxiexiang">
+            name:<input type="text" name="name" id="">
+        </div>
+        <div class="tianxiexiang">
+            email:<input type="text" name="email" id="">
+        </div>
+        <div class="tianxiexiang">
+            salary:<input type="text" name="salary" id="">
+        </div>
+        <input id="submit" type="submit" value="提交">
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        #app {
+            border: 1px solid red;
+            width: 400px;
+            
+            margin: 50px auto;
+            box-shadow: 0 0 10px rgba(92, 92, 92, 0.459);
+        }
+        #app>.input>input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 50px;
+            font-size: 24px;
+            padding: 10px;
+            border-width: 0;
+            border-bottom: 1px solid rgb(218, 218, 218);
+        }
+        #app>.input>input:focus{
+            outline: 0;
+        }
+        #app>.ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #app>.ul>li:not(:last-child){
+            padding: 10px 30px;
+            position: relative;
+            border-bottom: 1px solid rgb(218, 218, 218);
+            line-height: 30px;
+           
+        }
+        #app>.ul>li:not(:last-child)>span.x{
+            display: none;
+        }
+        #app>.ul>li:not(:last-child):hover>span.x{
+            position: absolute;
+            right: 10px;
+            
+            font-size: 24px;
+            display: inline;
+        }
+        #app>.ul>li:not(:last-child)>span.index{
+            position:relative;
+            left:-20px;
+        }
+        #app>.ul>li:last-child{
+            position: relative;
+        }
+        #app>.ul>li:last-child>a{
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app" class="app">
+        <div class="input">
+            <input type="text" @keyup.enter='add' v-model='message' placeholder="请输入任务">
+        </div>
+        <ul class="ul">
+            <li v-for='(i,index) in arr'>
+               <span class="index">{{index+1}}.</span> {{i}}
+                <span class="x" @click='remove(index)'>x</span>
+            </li>
+            <li v-if='arr.length>0'> <strong>{{arr.length}} </strong>items left
+                <a href="#" @click='clear'>clear</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                message: '',
+                arr: ['吃饭饭', '睡觉觉', '写代码']
+
+            },
+            methods: {
+                add: function () {
+                    this.arr.push(this.message)
+                },
+                remove: function (index) {
+                    this.arr.splice(index,1)
+                },
+                clear:function(){
+                    this.arr=[];
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

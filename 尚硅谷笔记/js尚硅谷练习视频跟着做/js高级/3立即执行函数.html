@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (function(){
+            function test(){
+                console.log(666);
+            }
+            // window.$={
+            //     test:test
+            // }
+            window.$=function(){
+                return {
+                    test:test
+                }
+            }
+        })()
+       window.$().test()
+       
+    // window.$.test()
+    // test在全局被销毁，不过全局有window.$这个对象，对象里有test\
+    // jquery就是这样
+    </script>
+</body>
+</html>

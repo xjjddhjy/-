@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Fun(name){
+            this.name=name;
+            this.sayhello=function(){
+                console.log('hello')
+            }
+        }
+        var fun1=new Fun('谢建军');
+        var fun2=new Fun('张朝骏');
+        fun1.sayhello();
+        console.log(Fun.prototype);
+        Fun.prototype.a=123;
+        fun1.__proto__.sayworld=function(){
+            console.log('world');
+        }
+        // 每个类都有自己的prototype属性，存放原型对象的地址(原型对象在堆里)，
+        // 实例对象可以用__proto__访问,存放原型对象的地址
+        // 给prototype或__proto__里添加东西,可以让多个实例对象共用同一个东西，省内存
+        // 
+        // 
+        // 
+        console.log(Fun.prototype==fun1.__proto__);
+        console.log(fun1.a);
+        // fun1里没有a,就去__proto__里找
+        fun1.sayworld();
+        console.log('a' in fun1);
+        // 检查属性是否在对象里，就算对象没有，原型有，也算有
+        console.log(fun1.hasOwnProperty('a'));
+        console.log(fun1.__proto__.__proto__.hasOwnProperty('hasOwnProperty'));
+        console.log(fun1.__proto__.__proto__==Object.prototype);
+        // hasOwnProperty方法之所以有，是因为在原型的原型(基类的原型)里有
+        //检查属性是否在对象里，对象没有，就是没有，比上面的in范围更窄更好用
+        console.log(fun1 instanceof Fun);
+        //  instanceof检查子类是否是父类的实例
+        
+    </script>
+</body>
+</html>

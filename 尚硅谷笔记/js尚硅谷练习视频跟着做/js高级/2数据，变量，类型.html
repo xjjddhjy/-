@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 什么是数据
+        // 存储在内存上的东西，本质上是010102131.....的二进制，数据可传递
+        // 内存：内存条通电后产生的可存储数据的空间（临时的）
+        // 内存产生和死亡：内存条（电路板）》通电》产生内存空间》存储数据》处理数据》断电》内存空间和数据消失
+        // 变量：可变化的量，由变量名和变量值组成，每个变量都对应一个小内存，用来查找对应的内存
+        // 变量值就是内存中保存的数据
+        // 栈：存放全局变量/局部变量
+        // 堆：存放对象
+        var a={name:'tom'};
+        function fn(obj){
+            // 有变量a指向tom，形参obj
+            // 一开始传入a，相当于把a的内容存放的地址复制给形参obj，
+            // 然后形参obj存放tom的地址，接着把先断了，存放john的地址
+            // 最后函数执行完毕，局部变量销毁，形参obj把线断了
+            // 不过全局的a还是会存放tom的，不会变
+            obj={name:'john'};
+        }
+        fn(a);
+        console.log(a);
+        // 在js调用函数传参是值传递，相当于
+        // a=1,b=a,这样的变量赋值，不管变量存放的是地址还是基本类型，
+        // 都是在栈里进行的值传递，形参和实参是两个变量
+        // IIFE：立即执行函数,作用：隐藏实现，不会生成全局变量污染全局空间
+        // 
+        (function (){
+            var a=5;
+            console.log(a);
+        })()
+    </script>
+</body>
+</html>

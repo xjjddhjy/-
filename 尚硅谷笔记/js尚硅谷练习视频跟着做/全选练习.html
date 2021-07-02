@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 传入字符串和回调函数
+        function myClick(obj, fun) {
+            var Obj = document.getElementById(obj);
+            Obj.onclick = fun;
+        };
+        window.onload = function () {
+            var items = document.getElementsByClassName('ball');
+
+            myClick('all', function () {
+                for (var i = 0; i < items.length; i++) {
+                    items[i].checked = true;
+
+                }
+                allOrNoBtn.checked = true;
+            });
+            myClick('no', function () {
+                for (var i = 0; i < items.length; i++) {
+                    items[i].checked = false;
+
+                }
+
+                allOrNoBtn.checked = false;
+            });
+            myClick('rev', function () {
+                for (var i = 0; i < items.length; i++) {
+                    items[i].checked = !items[i].checked;
+
+                }
+                allOrNoBtn.checked = true;
+                    for (var i = 0; i < items.length; i++) {
+                        if (items[i].checked == false) {
+                            allOrNoBtn.checked = false;
+                            break;
+                        }
+                    }
+
+            });
+            myClick('put', function () {
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].checked) {
+                        console.log(items[i].value);
+                    }
+
+
+                }
+            });
+            myClick('allOrNo', function () {
+                if (this.checked) {
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].checked = true;
+                    }
+                }else{
+                    for (var i = 0; i < items.length; i++) {
+                    items[i].checked = false;
+
+                }
+                }
+
+            });
+            var allOrNoBtn = document.getElementById('allOrNo');
+            for (var i = 0; i < items.length; i++) {
+
+                items[i].onclick = function () {
+                    allOrNoBtn.checked = true;
+                    for (var i = 0; i < items.length; i++) {
+                        if (items[i].checked == false) {
+                            allOrNoBtn.checked = false;
+                            break;
+                        }
+                    }
+
+
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    你爱好的运动是
+    <input type="checkbox" name="all" id="allOrNo" value="">全选/全不选
+    <br>
+    <input type="checkbox" name="ball1" class="ball" value="足球">足球
+    <input type="checkbox" name="ball2" class="ball" value="篮球">篮球
+    <input type="checkbox" name="ball3" class="ball" value="羽毛球">羽毛球
+    <input type="checkbox" name="ball4" class="ball" value="乒乓球">乒乓球
+    <br>
+    <input type="button" value="全选" id="all">
+    <input type="button" value="全不选" id="no">
+    <input type="button" value="反选" id="rev">
+    <input type="button" value="提交" id="put">
+</body>
+
+</html>

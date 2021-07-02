@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+            position: absolute;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(203, 170, 255);
+            position: absolute;
+            left: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            var box2 = document.getElementById('box2');
+
+            // 提取拖拽函数
+            function drag(obj) {
+                obj.onmousedown = function () {
+                    // ie8
+                    if (obj.setCapture) {
+                        obj.setCapture();
+                    }
+
+                    var pleft = event.clientX - obj.offsetLeft;
+                    var pright = event.clientY - obj.offsetTop;
+                    console.log('down');
+                    document.onmousemove = function () {
+                        var html = document.documentElement;
+
+                        console.log(event.clientX);
+                        console.log(obj.offsetLeft);
+                        var left = event.clientX + html.scrollLeft - pleft;
+                        var top = event.clientY + html.scrollTop - pright;
+                        obj.style.left = left + 'px';
+                        obj.style.top = top + 'px';
+
+                    };
+                    document.onmouseup = function () {
+                        document.onmousemove = null;
+                        console.log(666);
+                        document.onmouseup = null;
+                        //ie8
+                        if (obj.releaseCapture) {
+                            obj.releaseCapture();
+                        }
+                        // obj.releasrCapture && obj.releaseCapture()
+
+
+
+                    };
+                    // 处理有文字时，拖拽的异常,用return false，但是对ie8没用
+                    // 要用obj.setCapture强行霸占下一次行为，揽到他身上,事件不会传到文字，因为全部都是obj了
+                    return false;
+                };
+            }
+            drag(box1);
+            drag(box2);
+
+
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+        eriuerht
+    </div>
+    <div id="box2">
+
+    </div>
+</body>
+
+</html>

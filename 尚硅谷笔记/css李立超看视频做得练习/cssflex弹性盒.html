@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul{
+            width: 600px;
+            height: 800px;
+            border: 10px red solid;
+            line-height: 100px;
+            font-size: 50px;
+            text-align: center;
+            /* display:flex或inline-flex 
+            弹性容器的子元素会变成弹性元素*/
+            display: flex;
+            /* flex-direction: row; */
+            /* flex-direction: column;制定盒子内元素排列方式 */
+            flex-wrap: wrap;
+            /* flex-wrap: nowrap; */
+            /* flex-flow: row wrap; */
+            /* flex-flow: row wrap;是wrap和direction的简写 */
+            /* justify-content: space-between; */
+            /* justify-content留空: flex-start;沿着主轴起边排列，分配主轴的空白空间，还有flex-end,certer,space-around,space-between,space-evently */
+            /*  */
+            align-items: flex-start;
+            /* align-items: stretch; 元素在辅轴如何对齐,是否拉伸元素，
+            flrx-start沿始边不拉伸,flex-end，flex-center,base-line*/
+            align-content: space-around;
+            /* align-content: flex-start;与justify-content对应控制辅轴上的留空 */
+        }
+        li{
+            width: 200px;
+            
+            background-color: rgb(153, 113, 113);
+            flex-grow: 0;
+            /* flex-grow:0默认; 指定弹性元素伸展系数,按比例占用父元素剩余空间*/
+            flex-shrink: 0;
+            /* flex-shrink: 0;指定元素收缩性，要溢出的时候不会溢出，子元素等比例收缩,缩减多少按系数和元素大小来计算 */
+            flex-basis: 100px;
+            /* flex-basis: 100px;设置元素主轴基础长度 */
+            /* flex是上面3个的简写默认initial:0 1 auto */
+        }
+        li:nth-child(2){
+            background-color: blue;
+            flex-grow: 0;
+            align-self: flex-end;
+             /* align-self: flex-start;覆盖当前元素已有的align-items */
+            /* order: 1; */
+            /* order影响蒜素排列顺序 */
+
+        }
+        li:nth-child(3){
+            background-color: orange;
+            flex-grow: 0;
+        }
+        li:nth-child(4){
+            background-color: rgb(16, 80, 0);
+            flex-grow: 0;
+        }
+        li:nth-child(5){
+            background-color: rgb(0, 255, 234);
+            flex-grow: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1
+            
+        </li>
+        <li>2
+            <div>2</div>
+        </li>
+        <li>3
+            <div>3</div>
+            <div>3</div>
+        </li>
+        <li>
+            4 
+        </li>
+        <li>
+            5 <div>5</div>
+        </li>
+    </ul>
+</body>
+</html>

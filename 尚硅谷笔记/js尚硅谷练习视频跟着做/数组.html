@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr=new Array();
+        arr[0]=1;
+        console.log(arr[3]);
+        // 读取不存在的值不报错，返回undefined
+        console.log(arr.length);
+        arr[10]=1;
+        console.log(arr.length);
+        // 中间的值以逗号空出来
+        arr.length=2;
+        console.log(arr);
+        var arr2=[];
+        console.log(typeof arr2);
+        var arr3=new Array(20,10,30);
+        console.log(arr3);
+        var arr4=new Array(20);
+        console.log(arr4);
+        var arr5=['hello',1,2,3,true,undefined,arr4];
+        console.log(arr5);
+        // 数组4个方法,pop,push,unshift,shift
+        var result=arr5.push('唐僧');
+        // 返回新的长度
+        console.log(arr5);
+        console.log(result);
+        result =arr5.push('蜘蛛精','白骨精');
+        console.log(arr5);
+        console.log(result);
+        result=arr5.pop();
+        console.log(arr5,result);
+        result=arr5.unshift('牛魔王');
+        console.log(arr5,result);
+        result=arr5.unshift('二郎神','哪吒');
+        console.log(arr5,result);
+        result=arr5.shift();
+        console.log(arr5,result);
+
+
+    // 数组的遍历
+    for(var i=0;i<arr5.length;i++){
+        console.log(arr5[i]);
+    }
+    // 把对象范进数组
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+    }
+    var person1=new Person('红孩儿',8);
+    var person2=new Person('二郎神',18);
+    var person3=new Person('蜘蛛精',28);
+    var person4=new Person('白骨精',38);
+    var perArr=[person1,person2,person3,person4];
+    // 提取四个对象里age大于18的，并返回新的数组
+    function getAdult(arr){
+        var newArr=[];
+        for(var i=0;i<perArr.length;i++){
+            if(perArr[i].age>=18){
+                newArr.push(perArr[i])
+            }
+        }
+        return newArr;
+    }
+    var newArr=getAdult(perArr);
+    console.log(newArr);
+
+
+
+    </script>
+</body>
+</html>

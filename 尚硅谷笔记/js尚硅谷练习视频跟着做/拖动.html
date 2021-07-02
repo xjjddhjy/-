@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 1000px;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById('box1');
+            document.onmousemove=function(event){
+                event=event||window.event;
+                // clientX是鼠标相对于窗口的，pageX是相对于整个页面的，有滚动条也没事，不过pageX不兼容ie8
+                // var left=event.pageX;
+                // var top=event.pageY;
+                // 滚动条是属于html的，不是body的
+                var html=document.documentElement;
+                var left=event.clientX+html.scrollLeft;
+                var top=event.clientY+html.scrollTop;
+                box1.style.left=left+'px';
+                box1.style.top=top+'px';
+                console.log(html.scrollTop);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+
+    </div>
+</body>
+</html>

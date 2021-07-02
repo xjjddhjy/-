@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-html设置标签的文本值,还会解析html标签 -->
+    <div id="app" class="app">      
+        {{ message}}
+        <span>{{ message+'666' }}</span>
+        <h2 v-html='message+"666"'></h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                message: '<h1>我是h1</h1>'
+            }
+        })
+    </script>
+</body>
+
+</html>

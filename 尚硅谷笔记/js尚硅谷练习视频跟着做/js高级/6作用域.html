@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if(true){
+            var c=6
+        }
+        console.log(c);
+        d=3
+        // 上下文是执行时不同作用域的代码段，
+        // 作用域是写代码时就知道了
+        var x=10
+        function fn(){
+            console.log(x);
+        }
+        function show(f){
+            var x=20
+            f()
+            // 调用外部的函数，就用外部函数他自己的作用域，然后自己没有，外面找到10
+        }
+        show(fn)
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <script>
+        document.getElementsByTagName('button')[0].onclick=function(){
+            var start=Date.now()
+            setTimeout(function(){
+                console.log('定时器执行了');
+                console.log(Date.now()-start);
+
+            },200)
+            // 做一个长时间的工作
+            for(var i=0;i<100000000;i++){
+
+            }
+            // 定时器有可能会比原来的时间延迟
+            // 
+            
+            
+            
+        }
+    </script>
+</body>
+</html>

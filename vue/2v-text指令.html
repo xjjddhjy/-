@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-text设置标签的文本值 -->
+    <div id="app" class="app">
+        <!-- {{}}部分替换 -->
+        {{ message}}
+        <span>{{ message+'666' }}</span>
+        <!-- 全部替换标签里的 -->
+        <h2 v-text='message+"666"'></h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+    </script>
+</body>
+
+</html>

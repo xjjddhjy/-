@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // json
+        window.onload=function(){
+            var obj={'name':'孙悟空',
+                    'age':18,
+                    'gender':'男'                            
+             };
+               // js的对象只有js认识，想要发送到后台，
+            //    只能转成任何语言都认识的东西，比如数字，字符串
+            // 所以我们给这个字符串起了个名字就叫json
+            // json可以转成任何语言的对象，达到交互数据
+            // json:javaScript Object Notation,js对象表示法
+            // json的格式和js对象格式一样，只不过json的属性名必须用双引号
+            // json分两种
+            // 1.对象
+            // 2.数组
+            // json允许的值：字符串，数值，布尔值，null，普通对象(不包括函数)，数组
+            var obj='{"name":"孙悟空","age":18, "gender":"男"}';
+            var arr='[1,2,3,"hello",true]';
+            var obj2='{"arr":[1,2,3]}';
+            var arr2='[{"name":"孙悟空","age":18, "gender":"男"},{"name":"孙悟空","age":18, "gender":"男"}]'
+            console.log(obj);
+            // 将json字符串转成对象或者对象转字符串，用工具类JSON,
+            // JSON.parse()传入json字符串
+            console.log(JSON);
+            var o=JSON.parse(obj);
+            var o2=JSON.parse(arr);
+            // console.log(o.name);
+            // console.log(o2[0]);
+            var obj3={name:'猪八戒',age:28,gender:'男'};
+            // JSON.stringify()将js对象转成json，传入一个js对象
+            var str=JSON.stringify(obj3);
+            console.log(typeof str);
+            //  JSON在ie7及以下不支持，
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

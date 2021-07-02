@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #app{
+            width: 300px;
+            height: 200px;
+            position: relative;
+            
+            margin: 50px auto;
+            
+        }
+        #app img{
+            vertical-align:top;
+        }
+        .prev{
+            width: 11px;
+            height: 16px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            background-image:url('../尚硅谷笔记/资料/图片/amazon-sprite_.png') ;
+            background-position:-169px -360px ;
+        }
+        .next{
+            width: 11px;
+            height: 16px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            background-image:url('../尚硅谷笔记/资料/图片/amazon-sprite_.png') ;
+            background-position: -169px -339px;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <div id="app" class="app"> 
+        <img width="300px" height="200px"  :src="imgArr[index]" alt="">
+        <a class="prev" href="#" v-show='index!=0' @click='prev'>
+        </a>
+        <a class="next" href="#" v-show='index<imgArr.length-1' @click='next'></a>
+   </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+               imgArr:[
+                '../1.jpg',
+               '../2.jpg',
+               '../3.jpg',
+               '../4.jpg',
+               '../6.jpg',
+               '../7.jpg',
+               '../8.jpg',
+               '../9.jpg',
+            ],
+                index:0,
+            },
+            methods:{
+                prev:function(){
+                    this.index-=1
+                },
+                next:function(){
+                    this.index+=1
+                }
+            }
+            
+            
+        })
+    </script>
+</body>
+
+</html>

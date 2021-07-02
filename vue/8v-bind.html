@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .active{
+            background-color: red;
+            border: 10px red solid;
+        }
+    </style>
+</head>
+
+<body>
+   <!-- v-bind操纵元素属性 -->
+    <div id="app" class="app"> 
+        <button @click='toggleIsShow'>切换</button>  
+        <!-- v-bind:src简写:src -->
+         <!--v-bind:class="isActive?'active':''"两种写法，一种是三元表达式，一种是对象{key1:value1,key2:value2},键为类名，值为bool控制类型有没有  -->
+        <img @click='toggleIsShow' v-bind:src='imgSrc' alt="" v-bind:class="{active:isShow}" width="200px" height="200px">
+    </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                isShow:false,
+                age:17,
+                imgSrc:'../1.jpg',
+                isActive:true
+            },
+            methods:{
+                toggleIsShow:function(){
+                    this.isShow=!this.isShow
+                }
+            }
+            
+            
+        })
+    </script>
+</body>
+
+</html>

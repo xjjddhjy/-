@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Supper(){
+            this.supProp='Supper property'
+
+        }
+        Supper.prototype.showSupperProp=function(){
+            console.log(this.supProp);
+
+        }
+        function Sub(){
+            this.sub='Sub property'
+
+        }
+        Supper.prototype.showSubProp=function(){
+            console.log(this.sub);
+            
+        
+        }
+        
+        Sub.prototype=new Supper()
+        // 让子类型的原型的constructor指向子类型
+        Sub.prototype.constructor=Sub
+        var sub=new Sub()
+        // 之所以能用toString,是因为函数的原型是Object的实例，
+        // 能用Object的原型的方法，内部其实有sub.prototype={}这么一个语句
+        // 所以我们想要用sub去调用showSupperProp方法的话
+        // 就要sub.prototype是Supper的实例
+        // 就要sub.prototype=new Supper()
+        // 这叫子类型的原型为父类型的实例
+        sub.showSupperProp()
+        sub.toString()
+        console.log(sub);
+    </script>
+</body>
+</html>

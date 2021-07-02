@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <!-- v-model获取和设置表单元素的值（双向数据绑定)-->
+    <div id="app" class="app">
+        <input type="button" value="修改message" @click='setM'>
+        <input type="text" v-model='message' @keyup.enter='getM'>
+        <h2 >{{message}} </h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                message: '黑马'
+
+            },
+            methods: {
+                getM:function(){
+                    alert(this.message)
+                },
+                setM:function(){
+                    this.message='苦丁鱼'
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

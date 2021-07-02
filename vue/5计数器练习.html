@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-on绑定事件 -->
+    <div id="app" class="app">      
+        <button @click=down>-</button>
+        <span>{{message}}</span>
+        <button @click=up>+</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                message:1
+            },
+            
+            methods:{
+               down:function(){
+                   if(this.message==1){
+                       alert('到底了')
+                       
+                   }else{
+                    this.message-=1
+                   }
+                   
+                   
+               } , 
+               up:function(){
+                if(this.message==10){
+                       alert('到底了')
+                       
+                   }else{
+                    this.message+=1
+                   }
+                   
+               }     
+            }
+            
+        })
+    </script>
+</body>
+
+</html>

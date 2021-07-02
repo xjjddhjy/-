@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            height: 200px;
+            width: 200px;
+            background-color: #bfa;
+        }
+        #box2{
+            height: 200px;
+            width: 200px;
+            background-color: rgb(217, 170, 255);
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById('box1'); 
+            var box2=document.getElementById('box2'); 
+            // onkeydown只能给document或能获取焦点的元素绑定
+            box2.onkeydown=function(){
+                // 使文本框不能输入数字
+                if(event.keyCode>=48 && event.keyCode<=57){
+                    return false;
+                }
+                // 给输入框取消默认行为，那么输入不了字
+
+                
+            }
+            document.onkeydown=function(){
+                // 按着不松手会一直触发，按下之后后面的与第一次会相隔一段时间，是浏览器默认行为防止误操作
+                // event.( Keyalt Keyctrl Keymeta Keyshift keyCode)
+                // console.log('我点了');
+                // 想要验证多个键同时按下，得keyCode和前面的配合
+                console.log(event.keyCode);
+                if(event.altKey && event.ctrlKey && event.keyCode=='65'){
+                    console.log('ok');
+                } ;
+            }
+            document.onkeyup=function(){
+            //    console.log('松开了');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+        
+    </div>
+    <input type="text" id="box2">
+</body>
+</html>
