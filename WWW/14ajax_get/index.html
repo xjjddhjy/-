@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML异步对象可不跳转发送请求</title>
+</head>
+<body>
+    <input type="text" value="发送请求报文">
+
+    <h2></h2>
+<h3>状态</h3>
+</body>
+
+<script>
+    
+    var h2=document.querySelector('h2');
+    document.querySelector('input').onblur=function(){
+        document.querySelector('h3').innerHTML='验证中';
+        // 创建异步对象
+        var xhr=new XMLHttpRequest();
+        // 请求行，get请求的数据是拼接在url上的
+        xhr.open('get','xxx.php?name='+this.value);
+        // 注册回调函数
+        xhr.onload=function(){
+          h2.innerHTML=xhr.responseText;
+          document.querySelector('h3').innerHTML='验证完毕';
+        }
+        // 请求头setRequesrHeader，get请求可省略请求头
+        // 参数1，键名，2,值
+        xhr.setRequestHeader('heima','good');
+
+        
+        // 请求主题,且发送
+        xhr.send(null);
+    
+    }
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .item1{grid-area:header;}
+    .item2{grid-area:nav;}
+    .item3{grid-area:main;}
+    .item4{grid-area:aside;}
+    .item5{grid-area:footer;}
+    .grid-container{
+      display: grid;
+      padding: 10px;
+      /*  grid-template-areas可以和 grid-template-columns或rows一起用,
+      3者可以简写成grid-template
+      '. header header header header' 180px
+      'nav main main main aside' 250px 
+      'nav footer footer footer footer' 160px /  200px 1fr 1fr 1fr 100px;
+
+ */
+      grid-template-columns: 200px 1fr 1fr 1fr 100px;
+      /* grid-template-rows: 180px 250px 160px; */
+      grid-template-areas: 
+      /* 'header header header header header'
+      'nav main main main aside'
+      'nav footer footer footer footer'; */
+      '. header header header header'
+      'nav main main main aside'
+      'nav footer footer footer footer';
+      grid-gap:10px;
+      background-color: lightblue;
+    }
+    .grid-container>*{
+      text-align: center;
+      padding: 20px 0;
+      font-size: 30px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="item1">Header</div>
+    <div class="item2">Header</div>
+    <div class="item3">
+      <div>section</div>
+      <div>section</div>
+      <div>section</div>
+      <div>section</div>
+      <div>section</div>
+
+    </div>
+    <div class="item4">aside</div>
+    <div class="item5">footer</div>
+  </div>
+</body>
+</html>

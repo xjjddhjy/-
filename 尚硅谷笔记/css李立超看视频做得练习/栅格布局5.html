@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    .grid-container {
+      display: grid;
+      padding: 10px;
+      grid-template-columns: [first apple] 1fr [banana] 2fr [cat] 3fr [last dog];
+      grid-template-rows:[first one] 100px [two] 200px [last three];
+      background-color: lightblue;
+    }
+    .one{
+      grid-column-start: banana;
+      grid-column-end: dog;
+      grid-row-start: one;
+      grid-row-end: two;
+    }
+    .two{
+      grid-column-start:first;
+      grid-column-end: last;
+      grid-row-start:two;
+      grid-row-end: three;
+    }
+    .three{
+      grid-column-start: apple;
+      grid-column-end: banana;
+      grid-row-start: first;
+      grid-row-end: two;
+    }
+
+    .grid-container>div {
+      text-align: center;
+      padding: 10px;
+      border: 1px solid white;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-container">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .grid-container{
+      display: grid;
+      padding: 10px;
+      height: 600px;
+      /* grid-template-columns: 200px 50% 100px; */
+      /* 把100px改成1fr可以占据剩余宽度 */
+      /* grid-template-columns: 200px 50% 1fr; */
+    /* 平分3列 */
+      /* grid-template-columns: 1fr 1fr 1fr; */
+      grid-template-columns: 1fr 2fr 3fr;
+      /* grid-template-rows: 50px 100px; */
+      /* grid-template-rows是按照容器的身高去比例的 */
+      /* 容器没身高就按照内容指定 */
+      grid-template-rows: 1fr 2fr;
+      background-color: lightblue;
+    }
+    .grid-container>div{
+      text-align: center;
+      padding: 10px;
+      border: 1px solid white;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+</body>
+</html>

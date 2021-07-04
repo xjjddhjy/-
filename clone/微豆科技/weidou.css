@@ -1,0 +1,133 @@
+.grid-container{
+  display: grid;
+  padding: 10px;
+  justify-content:space-evenly ;
+  grid-template-columns:repeat(auto-fit,400px);
+
+}
+.grid-container2{
+  display: grid;
+  padding: 10px;
+  grid-template-columns:repeat(auto-fill,251px);
+  justify-content: center;
+  grid-gap: 20px;
+  
+
+}
+.grid-container3{
+  display: grid;
+  
+  grid-template-columns:repeat(auto-fit,56px);
+  justify-content: center;
+  grid-gap: 50px;
+  margin: 0 auto;
+  
+
+}
+.grid-container4{
+  display: grid;
+  /* padding: 20px; */
+  grid-gap: 30px;
+  grid-template-columns:repeat(auto-fill,20px);
+  text-align: center;
+}
+/* .grid-container>div{
+  text-align: center;
+  padding: 10px;
+  border: 1px solid white;
+  
+} */
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+/* .c1{
+    padding-top: 20px;
+    margin-left: 190px;
+} */
+.flex{
+    display: flex;
+}
+.hover:hover{
+    color: #98C72F;
+}
+.c1-2{
+    width: 400px;
+   /* margin-left: auto; */
+   /* margin-right: 200px; */
+   justify-content: space-evenly;
+   margin-top: 10px;
+}
+
+.c3-1{
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.c3-2{
+    width: 380px;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+.c3-2-1{
+    border-bottom:1px solid #BEBEBE ;
+}
+.c3-2-1 span{
+    padding-bottom:2px ;
+    border-bottom:3px solid #25bb52 ;
+}
+.c4-1{
+    /* width: 600px; */
+    margin-top: 60px;
+    font-weight: 100;
+    margin: 0 auto;
+   /* justify-content: space-evenly; */
+   margin-top: 20px;
+   margin-bottom: 10px;
+}
+.c4-1>div{
+    padding-bottom:10px ;
+    border-bottom: 2px solid #43392d00;
+}
+.c4-1>div:hover{
+    border-bottom: 2px solid #E7891D;
+}
+
+
+/* .c4-2-1{
+    width: 1150px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+} */
+/* .c4-2-1>img{
+    margin-bottom: 20px;
+} */
+.c4-3{
+    width: 200px;
+    margin: 20px auto;
+    /* justify-content:space-between; */
+}
+.c4-3>div{
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.c5-1{
+    width: 100%;
+    background-color: #505050;
+    margin-left: auto;
+}
+.c5-1>img{
+  width: 100%;
+}
+.c5-2{
+    height: 60px;
+    background-color: black;
+    justify-content: space-evenly;
+    line-height: 60px;
+}

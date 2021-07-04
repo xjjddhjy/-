@@ -1,0 +1,157 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+.flex{
+    display: flex;
+}
+.c1-1-1{
+   margin: 25px 20px; 
+}
+.c1-1-2{
+    width:540px ;
+    margin-right: 65px;
+    margin-left: auto;
+}
+.c1-1-2-1{
+    width: 188px;
+    margin-left: auto;
+    margin-right: 0;
+}
+.c1-1-2-1 div{
+    background-color: #ECECEC;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.yline{
+    opacity: 0.3;
+}
+.c1-1-2-2{
+    font-size: 14px;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+
+.c1-1-2-1-1{
+    padding-left: 55px;
+    padding-right: 15px;
+}
+.c1-1-2-1-2{
+    padding-left: 15px;
+    padding-right: 55px;
+}
+.p1520{
+    padding-left: 15px;
+    padding-right: 20px;
+}
+.hover:hover{
+    color: #0B7BC9;
+}
+.c1-1-2-3{
+    width: 400px;
+    height: 20px;
+    line-height: 20px;
+    /* background-color: #1647A1; */
+    background-image: repeating-linear-gradient(to bottom ,#3f79e6, #2753a5 10px,#4682f0 20px);
+    font-size: 12px;
+    color: white;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+.c2-1{
+    margin-top: -6px;
+}
+.c3-1{
+    float: left;
+    margin-left: 35px;
+    padding: 13px;
+    width: 160px;
+    border: 2px solid #1B4BA5;
+    border-radius: 10px;
+}
+.f12{
+    font-size: 12px;
+}
+.bb1{
+    border-bottom: 1px solid #DBDBDB;
+}
+.paddingb5{
+    padding-bottom: 5px;
+}
+.paddingb20{
+    padding-bottom: 20px;
+}
+.c3-2{
+    width: 745px;
+    margin-right: 0;
+    margin-left: auto;
+}
+.w681{
+    width: 681px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.c3-2-1{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.185) ;
+}
+.c3-2-1-3>div{
+    padding: 0 2px;
+}
+
+.c3-2-2-1{
+    float: left;
+}
+.c3-2-2-2{
+    width: 280px;
+    margin-left: auto;
+    margin-right: 0;
+}
+.pb10{
+    padding-bottom: 10px;
+}
+.bb1s{
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.356) ;
+}
+.pl20{
+    padding-left: 20px;
+}
+.ml20{
+    margin-left: 20px;
+}
+.pr40{
+    padding-right: 40px;
+}
+.pr20{
+    padding-right: 20px;
+}
+.mt15{
+    margin-top: 15px;
+}
+.c3-2-3{
+    line-height: 90px;
+    margin-top: 30px;
+    justify-content: space-around;
+}
+.hover2:hover{
+    color: black;
+    border: 0px solid rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    background-color: white;
+    
+}
+.c3-2-4{
+    height: 27px;
+    line-height: 23px;
+    justify-content: start;
+    /* background-color: #4A73C0; */
+    background-image: repeating-linear-gradient(to bottom ,#4985f5, #3d65b1 10px,#447ee9 20px);
+
+    border-radius: 15px;
+    color: white;
+    
+}

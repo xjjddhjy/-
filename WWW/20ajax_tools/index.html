@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input class='get' type="button" value="测试get">
+    <input class="post" type="button" value="测试post">
+    <input class="ajax_test" type="button" value="测试zixuan">
+</body>
+
+</html>
+<script src="./ajax.js"></script>
+<script>
+    document.querySelector('.get').onclick = function () {
+        get('./backSendData.php', 'name=jack',
+            function (data) {
+                console.log(data);
+            })
+    }
+    document.querySelector('.ajax_test').onclick = function () {
+        ajax({
+            url: './backSendData.php',
+            type: 'get',
+            data: 'name=jack',
+            callback: function (data) {
+                console.log(data);
+            }
+        })
+    }
+</script>

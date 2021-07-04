@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .item1 {
+      grid-area: a;
+      align-self: stretch;
+    }
+
+    .item2 {
+      grid-area: b;
+    }
+
+    .item3 {
+      grid-area: c;
+    }
+
+    .item4 {
+      grid-area: d;
+    }
+
+    /* .grid-container{
+      display: grid;
+      padding: 10px;
+      background-color: lightblue;
+      grid-template-columns: 100px 100px 100px;
+      justify-content: space-around;
+      align-content:space-around;
+      height: 200px;
+
+    } */
+    .grid-container {
+      display: grid;
+      padding: 10px;
+      grid-gap:10px;
+      grid-template-areas: 
+      'a b b'
+      'c c d'
+      ;
+      grid-template-rows: 100px 200px;
+      background-color: lightblue;
+      /* justify-items: center; */
+      /* align-items: center; */
+      place-content: start space-between;
+      place-items: end center;
+
+    }
+
+    .grid-container>div {
+      text-align: center;
+      padding: 10px;
+      border: 1px solid white;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-container">
+    <div class="item1">abcdeabcdeabcde</div>
+    <div class="item2">abcdeabcdeabcde</div>
+    <div class="item3">abcdeabcdeabcde</div>
+    <div class="item4">abcdeabcdeabcde</div>
+
+  </div>
+</body>
+
+</html>
